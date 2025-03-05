@@ -1,7 +1,6 @@
 const config = {
-    defaultPage: 'introduction',
-    markdownPath: './docs/',
-    docsJsonPath: './docs.json'
+    defaultPage: '1-intro',
+    markdownPath: './articles/'
 };
 
 const sidebarMenu = document.getElementById('sidebar-menu');
@@ -22,11 +21,11 @@ const originalBlockquote = renderer.blockquote;
 
 renderer.blockquote = function(quote) {
     const calloutMatch = quote.match(/<p>\[!(INFO|NOTE|TIP|IMPORTANT|WARNING|CAUTION|DANGER)\](.*?)(?:<\/p>)?/i);
-    
+
     if (calloutMatch) {
         const type = calloutMatch[1].toLowerCase();
         let content = quote.replace(/<p>\[!.*?\](.*?)(?:<\/p>)?/i, '$1');
-        
+
         let icon = '';
         switch (type) {
             case 'info':
@@ -49,10 +48,10 @@ renderer.blockquote = function(quote) {
             default:
                 icon = '<i class="ri-information-line"></i>';
         }
-        
+
         return `<div class="callout callout-${type}">${icon}<div class="callout-content">${content}</div></div>`;
     }
-    
+
     return originalBlockquote.call(this, quote);
 };
 
@@ -75,7 +74,7 @@ menuButton.addEventListener('click', () => {
 searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
     const menuItems = document.querySelectorAll('.menu-item');
-    
+
     menuItems.forEach(item => {
         const text = item.textContent.toLowerCase();
         if (text.includes(searchTerm) || searchTerm === '') {
@@ -88,19 +87,19 @@ searchInput.addEventListener('input', (e) => {
 
 async function loadDocStructure() {
     try {
-        const response = await fetch(config.docsJsonPath);
+        const response = await fetch(config.markdownPath);
         if (!response.ok) {
-            throw new Error(`Failed to load docs.json: ${response.status}`);
+            throw new Error(`Failed to load documentation structure: ${response.status}`);
         }
-        
+
         docsStructure = await response.json();
         projectNameElement.textContent = docsStructure.title || 'Documentation';
         document.title = docsStructure.title || 'Documentation';
-        
+
         pagesArray = docsStructure.pages;
-        
+
         buildSidebar(docsStructure);
-        
+
         const defaultPageId = config.defaultPage || (docsStructure.pages[0] && docsStructure.pages[0].id);
         if (defaultPageId) {
             loadPage(defaultPageId);
@@ -110,7 +109,7 @@ async function loadDocStructure() {
         contentElement.innerHTML = `
             <h1>Error Loading Documentation</h1>
             <div class="error">
-                <p>Failed to load the documentation structure. Please check your docs.json file.</p>
+                <p>Failed to load the documentation structure. Please check your PHP script.</p>
                 <pre>${error.message}</pre>
             </div>
         `;
@@ -119,13 +118,13 @@ async function loadDocStructure() {
 
 function buildSidebar(structure) {
     sidebarMenu.innerHTML = '';
-    
+
     structure.pages.forEach(page => {
         pages[page.id] = page;
     });
-    
+
     let currentCategory = null;
-    
+
     structure.pages.forEach(page => {
         if (page.category && page.category !== currentCategory) {
             currentCategory = page.category;
@@ -134,13 +133,13 @@ function buildSidebar(structure) {
             categoryEl.textContent = currentCategory;
             sidebarMenu.appendChild(categoryEl);
         }
-        
+
         const menuItem = document.createElement('div');
         menuItem.className = 'menu-item';
         menuItem.textContent = page.title;
         menuItem.dataset.pageId = page.id;
         menuItem.addEventListener('click', () => loadPage(page.id));
-        
+
         sidebarMenu.appendChild(menuItem);
     });
 }
@@ -156,14 +155,14 @@ function isURL(str) {
 
 function createNavigationButtons(currentPageId) {
     const currentIndex = pagesArray.findIndex(page => page.id === currentPageId);
-    
+
     if (currentIndex === -1) return;
-    
+
     const prevPage = currentIndex > 0 ? pagesArray[currentIndex - 1] : null;
     const nextPage = currentIndex < pagesArray.length - 1 ? pagesArray[currentIndex + 1] : null;
-    
+
     let navHTML = '';
-    
+
     if (prevPage) {
         navHTML += `
             <button class="nav-button prev" data-page-id="${prevPage.id}">
@@ -185,7 +184,7 @@ function createNavigationButtons(currentPageId) {
             </button>
         `;
     }
-    
+
     if (nextPage) {
         navHTML += `
             <button class="nav-button next" data-page-id="${nextPage.id}">
@@ -207,18 +206,18 @@ function createNavigationButtons(currentPageId) {
             </button>
         `;
     }
-    
+
     navigationElement.innerHTML = navHTML;
-    
+
     const prevButton = navigationElement.querySelector('.prev:not(.disabled)');
     const nextButton = navigationElement.querySelector('.next:not(.disabled)');
-    
+
     if (prevButton) {
         prevButton.addEventListener('click', () => {
             loadPage(prevButton.dataset.pageId);
         });
     }
-    
+
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             loadPage(nextButton.dataset.pageId);
@@ -232,58 +231,58 @@ async function loadPage(pageId) {
         contentElement.innerHTML = '<h1>Page Not Found</h1><p>The requested page does not exist.</p>';
         return;
     }
-    
+
     const page = pages[pageId];
     currentPage = pageId;
-    
+
     document.querySelectorAll('.menu-item').forEach(item => {
         item.classList.remove('active');
         if (item.dataset.pageId === pageId) {
             item.classList.add('active');
         }
     });
-    
+
     if (window.innerWidth <= 768) {
         sidebar.classList.remove('active');
     }
-    
+
     contentElement.innerHTML = '<div class="loading">Loading page...</div>';
-    
+
     try {
         let markdown;
-        
+
         const filePath = page.file || `${pageId}.md`;
-        
+
         if (isURL(filePath)) {
             const response = await fetch(filePath);
-            
+
             if (!response.ok) {
                 throw new Error(`Failed to load markdown from URL: ${response.status}`);
             }
-            
+
             markdown = await response.text();
         } else {
             const markdownPath = `${config.markdownPath}${filePath}`;
             const response = await fetch(markdownPath);
-            
+
             if (!response.ok) {
                 throw new Error(`Failed to load markdown file: ${response.status}`);
             }
-            
+
             markdown = await response.text();
         }
-        
+
         contentElement.innerHTML = marked.parse(markdown);
-        
+
         history.pushState({ pageId }, page.title, `?p=${pageId}`);
         document.title = `${page.title} - ${docsStructure.title || 'Documentation'}`;
-        
+
         document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block);
         });
 
         handleRelativeLinks();
-        
+
         createNavigationButtons(pageId);
 
     } catch (error) {
@@ -295,24 +294,24 @@ async function loadPage(pageId) {
                 <pre>${error.message}</pre>
             </div>
         `;
-        
+
         navigationElement.innerHTML = '';
     }
 }
 
 function handleRelativeLinks() {
     const links = contentElement.querySelectorAll('a');
-    
+
     links.forEach(link => {
         const href = link.getAttribute('href');
-        
+
         if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://')) {
             return;
         }
-        
+
         if (href.endsWith('.md')) {
             const pageId = href.replace('.md', '');
-            
+
             if (pages[pageId]) {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -325,13 +324,13 @@ function handleRelativeLinks() {
 
 document.addEventListener('keydown', (e) => {
     const currentIndex = pagesArray.findIndex(page => page.id === currentPage);
-    
+
     if (currentIndex === -1) return;
-    
+
     if (e.key === 'ArrowLeft' && currentIndex > 0) {
         loadPage(pagesArray[currentIndex - 1].id);
     }
-    
+
     if (e.key === 'ArrowRight' && currentIndex < pagesArray.length - 1) {
         loadPage(pagesArray[currentIndex + 1].id);
     }
@@ -351,7 +350,7 @@ window.addEventListener('popstate', (event) => {
 function loadPageFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const pageParam = urlParams.get('p');
-    
+
     if (pageParam && pages[pageParam]) {
         loadPage(pageParam);
     }
