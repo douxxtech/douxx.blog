@@ -1,5 +1,5 @@
 [info_title]: Introduction
-[info_category]: MISC
+[info_category]: INFORMATION
 
 # Welcome to my blog 👋
 
