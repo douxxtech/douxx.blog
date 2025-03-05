@@ -22,14 +22,13 @@ function generateJsonFromMarkdownFiles($directory) {
 
     if ($handle = opendir($directory)) {
         while (false !== ($entry = readdir($handle))) {
-            if (strpos($entry, '.md') !== false) {
+            if (preg_match('/^(\d+)-.+\.md$/', $entry, $matches)) {
                 $filePath = $directory . '/' . $entry;
                 $fileContent = file_get_contents($filePath);
-
                 $info = extractInfoFromMarkdown($fileContent);
 
                 $pages[] = [
-                    'id' => pathinfo($entry, PATHINFO_FILENAME),
+                    'id' => (int)$matches[1],
                     'title' => $info['title'],
                     'file' => $entry,
                     'category' => $info['category']
@@ -38,6 +37,10 @@ function generateJsonFromMarkdownFiles($directory) {
         }
         closedir($handle);
     }
+
+    usort($pages, function ($a, $b) {
+        return $a['id'] <=> $b['id'];
+    });
 
     $jsonData = [
         'title' => 'Douxx.tech | Blog',
