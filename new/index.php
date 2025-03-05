@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newFilePath = $uploadDir . $newFilename;
 
     $metadata = "[info_title]: " . urlencode($title) . "\n";
-    $metadata .= "[info_category]: " . urlencode($category) . "\n\n";
+    $metadata .= "[info_category]: " . urlencode($category) . "\n";
+    $metadata .= "[info_track]: https://track.dpip.lol/?id=" . urlencode($title) . "\n\n";
 
     if (file_put_contents($newFilePath, $metadata . $content) === false) {
         die("Failed to save file.");
@@ -282,7 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .form-content {
                 padding: 1.5rem;
             }
-            
+
             .preview {
                 height: 200px;
             }
@@ -295,7 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <i class="ri-article-line ri-lg"></i>
             <h2>Create an Article</h2>
         </div>
-        
+
         <div class="form-content">
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($newFilename)): ?>
             <div class="success-message">
@@ -303,7 +304,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <span>File saved successfully as <?php echo $newFilename; ?></span>
             </div>
             <?php endif; ?>
-            
+
             <form action="" method="POST">
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
@@ -312,7 +313,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" name="password" id="password" class="input-icon" placeholder="Enter your password" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="title">Title</label>
                     <div class="input-wrapper">
@@ -320,7 +321,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="title" id="title" class="input-icon" placeholder="Article title" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="category">Category</label>
                     <div class="input-wrapper">
@@ -328,11 +329,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="category" id="category" class="input-icon" placeholder="Article category" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="markdown-content">Content</label>
                     <textarea name="content" id="markdown-content" placeholder="Write your article in Markdown" required></textarea>
-                    
+
                     <div class="preview-container">
                         <div class="preview-header">
                             <span class="preview-title">Preview</span>
@@ -341,7 +342,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="preview" id="preview"></div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <button type="submit">
                         <i class="ri-save-line"></i>
@@ -351,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-    
+
     <script>
         document.getElementById('markdown-content').addEventListener('input', function() {
             document.getElementById('preview').innerHTML = marked.parse(this.value);
