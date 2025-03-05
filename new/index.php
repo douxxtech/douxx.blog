@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     echo "File saved successfully as $newFilename";
+    exit();
 }
 ?>
 
