@@ -1,5 +1,6 @@
 [info_title]: Introduction
 [info_category]: INFORMATION
+[info_track]: https://track.dpip.lol/?id=Introduction
 
 # Welcome to my blog 👋
 
@@ -14,3 +15,17 @@ If need any help with something, please contact me at [douxx@douxx.xyz](mailto:d
 <--------------------------
 Check for all articles here
 <--------------------------
+
+---
+
+### Douxx's blog source code is on github!
+Url: [github.com/douxxtech/douxx.blog](https://github.com/douxxtech/douxx.blog)
+
+<img 
+      alt="TerminalOgp" 
+      src="https://togp.xyz?owner=douxxtech&repo=douxx.blog&theme=json-dark-all&cache=false" 
+      type="image/svg+xml" 
+      style="border-radius: 20px; overflow: hidden;"
+      width="800"
+      height="500"
+/>
