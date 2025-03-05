@@ -3,7 +3,8 @@
 function extractInfoFromMarkdown($fileContent) {
     $info = [
         'title' => '',
-        'category' => ''
+        'category' => '',
+        'track' => ''
     ];
 
     if (preg_match('/\[info_title\]: (.+)/', $fileContent, $matches)) {
@@ -12,6 +13,10 @@ function extractInfoFromMarkdown($fileContent) {
 
     if (preg_match('/\[info_category\]: (.+)/', $fileContent, $matches)) {
         $info['category'] = urldecode($matches[1]);
+    }
+
+    if (preg_match('/\[info_track\]: (.+)/', $fileContent, $matches)) {
+        $info['track'] = urldecode($matches[1]);
     }
 
     return $info;
@@ -28,10 +33,11 @@ function generateJsonFromMarkdownFiles($directory) {
                 $info = extractInfoFromMarkdown($fileContent);
 
                 $pages[] = [
-                    'id' => (int)$matches[1],
+                    'id' => pathinfo($entry, PATHINFO_FILENAME),
                     'title' => $info['title'],
                     'file' => $entry,
-                    'category' => $info['category']
+                    'category' => $info['category'],
+                    'trackurl' => $info['track']
                 ];
             }
         }

@@ -274,6 +274,11 @@ async function loadPage(pageId) {
 
         contentElement.innerHTML = marked.parse(markdown);
 
+        // Add eye icon for unique views
+        if (page.trackurl) {
+            fetchUniqueViews(page.trackurl);
+        }
+
         history.pushState({ pageId }, page.title, `?p=${pageId}`);
         document.title = `${page.title} - ${docsStructure.title || 'Documentation'}`;
 
@@ -296,6 +301,26 @@ async function loadPage(pageId) {
         `;
 
         navigationElement.innerHTML = '';
+    }
+}
+
+async function fetchUniqueViews(trackurl) {
+    try {
+        const response = await fetch(trackurl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch unique views: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const uniqueViews = data.unique_views || 0;
+
+        const eyeIcon = document.createElement('div');
+        eyeIcon.className = 'view-count';
+        eyeIcon.innerHTML = `<i class="ri-eye-line"></i> ${uniqueViews}`;
+
+        contentElement.appendChild(eyeIcon);
+    } catch (error) {
+        console.error('Error fetching unique views:', error);
     }
 }
 
