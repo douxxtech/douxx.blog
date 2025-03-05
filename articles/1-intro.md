@@ -5,7 +5,7 @@
 
 Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !
 
-Here will be posted some tutorials or.. yea idk some random shit basiclly.
+Here will be posted some tutorials or.. yea idk some random shit basically.
 
 This website is based on the [UrlToApp documentation website](https://docs.urltoapp.xyz) that I find really cool :)
 
