@@ -314,15 +314,21 @@ async function fetchUniqueViews(trackurl) {
         const data = await response.json();
         const uniqueViews = data.unique_views || 0;
 
-        const eyeIcon = document.createElement('div');
-        eyeIcon.className = 'view-count';
-        eyeIcon.innerHTML = `<i class="ri-eye-line"></i> ${uniqueViews}`;
+        let eyeIcon = contentElement.querySelector('.view-count');
 
-        contentElement.appendChild(eyeIcon);
+        if (eyeIcon) {
+            eyeIcon.innerHTML = `<i class="ri-eye-line"></i> ${uniqueViews}`;
+        } else {
+            eyeIcon = document.createElement('div');
+            eyeIcon.className = 'view-count';
+            eyeIcon.innerHTML = `<i class="ri-eye-line"></i> ${uniqueViews}`;
+            contentElement.appendChild(eyeIcon);
+        }
     } catch (error) {
         console.error('Error fetching unique views:', error);
     }
 }
+
 
 function handleRelativeLinks() {
     const links = contentElement.querySelectorAll('a');
