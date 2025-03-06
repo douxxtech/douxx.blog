@@ -1,5 +1,5 @@
 [info_title]: Introduction
-[info_category]: INFORMATION
+[info_category]: MISC
 [info_track]: https://track.dpip.lol/?id=Introduction
 
 # Welcome to my blog 👋
