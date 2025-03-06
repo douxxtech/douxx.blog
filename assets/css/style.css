@@ -9,7 +9,6 @@
     --sidebar-width: 280px;
     --header-height: 60px;
     
-    /* Couleurs pour les callouts */
     --callout-info-bg: rgba(56, 139, 253, 0.1);
     --callout-info-border: rgba(56, 139, 253, 0.4);
     --callout-note-bg: rgba(56, 139, 253, 0.1);
@@ -258,7 +257,6 @@ header {
     color: var(--text-secondary);
 }
 
-/* Styles pour les callouts GitHub */
 .callout {
     margin: 1rem 0;
     padding: 1rem;
