@@ -19,7 +19,7 @@ Check for all articles here
 ---
 
 ### Douxx's blog source code is on github!
-Url: [github.com/douxxtech/douxx.blog](https://github.com/douxxtech/douxx.blog)
+[douxxtech/douxx.blog](https://github.com/douxxtech/douxx.blog)
 
 <img 
       alt="TerminalOgp" 
