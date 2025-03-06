@@ -24,28 +24,49 @@ function extractInfoFromMarkdown($fileContent) {
 
 function generateJsonFromMarkdownFiles($directory) {
     $pages = [];
+    $categoryOrder = [];
 
     if ($handle = opendir($directory)) {
+        $entries = [];
         while (false !== ($entry = readdir($handle))) {
             if (preg_match('/^(\d+)-.+\.md$/', $entry, $matches)) {
-                $filePath = $directory . '/' . $entry;
-                $fileContent = file_get_contents($filePath);
-                $info = extractInfoFromMarkdown($fileContent);
+                $entries[$matches[1]] = $entry;
+            }
+        }
+        ksort($entries, SORT_NUMERIC);
+        
+        foreach ($entries as $entry) {
+            $filePath = $directory . '/' . $entry;
+            $fileContent = file_get_contents($filePath);
+            $info = extractInfoFromMarkdown($fileContent);
 
-                $pages[] = [
-                    'id' => pathinfo($entry, PATHINFO_FILENAME),
-                    'title' => $info['title'],
-                    'file' => $entry,
-                    'category' => $info['category'],
-                    'trackurl' => $info['track']
-                ];
+            $page = [
+                'id' => pathinfo($entry, PATHINFO_FILENAME),
+                'title' => $info['title'],
+                'file' => $entry,
+                'category' => $info['category'],
+                'trackurl' => $info['track']
+            ];
+            
+            $pages[] = $page;
+            
+            if (!empty($info['category']) && !in_array($info['category'], $categoryOrder)) {
+                $categoryOrder[] = $info['category'];
             }
         }
         closedir($handle);
     }
 
-    usort($pages, function ($a, $b) {
-        return $a['id'] <=> $b['id'];
+    usort($pages, function ($a, $b) use ($categoryOrder) {
+        if ($a['category'] !== $b['category']) {
+            $indexA = array_search($a['category'], $categoryOrder);
+            $indexB = array_search($b['category'], $categoryOrder);
+            return $indexA - $indexB;
+        }
+        
+        $idA = (int)preg_replace('/^(\d+)-.+$/', '$1', $a['id']);
+        $idB = (int)preg_replace('/^(\d+)-.+$/', '$1', $b['id']);
+        return $idA - $idB;
     });
 
     $jsonData = [
