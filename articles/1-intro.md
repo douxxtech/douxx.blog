@@ -5,7 +5,7 @@
 # Welcome to my blog 👋
 
 <a href="https://noskid.today">
-  <img src="https://noskid.today/badge/100x30/?website=https://douxx.blog" alt="NoSkid Verification">
+<img src="https://noskid.today/badge/100x30/?website=https://douxx.blog" alt="NoSkid Verification">
 </a>
 
 
