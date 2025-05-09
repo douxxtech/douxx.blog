@@ -91,7 +91,7 @@
         <main class="main-content">
             <div class="content-container">
                 <div class="content" id="content">
-                    <div class="loading">Loading documentation...</div>
+                    <div class="loading">Loading articles...</div>
                 </div>
                 <div class="page-navigation" id="page-navigation">
                 </div>
