@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Douxx.tech | Blog</title>
-    <link href="https://douxx.tech/public/icons/icon.png" rel="icon">
+    <link href="https://douxx.tech/assets/img/icon.png" rel="icon">
     <?php
     if (isset($_GET['p'])) {
         $param = $_GET['p'];
