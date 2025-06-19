@@ -100,5 +100,6 @@
     </div>
 
     <script src="assets/js/loader.js"></script>
+    <script src="assets/js/neko.js"></script>
 </body>
 </html>
