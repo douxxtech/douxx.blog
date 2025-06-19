@@ -40,8 +40,8 @@
         echo "<meta property='og:description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>";
     }
     ?>
-    <meta property="og:image" content="https://douxx.tech/public/Douxx_dev.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content="https://douxx.tech/assets/img/icon.png" />
+    <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="https://douxx.blog">
     <meta property="og:type" content="website"/>
     <meta name='description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>
@@ -53,7 +53,7 @@
     <meta name='reply-to' content='contact@douxx.tech'>
     <meta name='owner' content='douxx'>
     <meta name='url' content='https://douxx.blog'>
-    <meta name='pagename' content='U2A - URL to App'>
+    <meta name='pagename' content='Douxx\'s Blog'>
     <meta name='distribution' content='Global'>
     <meta name='rating' content='General'>
     <meta name='target' content='technology'>
