@@ -2,7 +2,7 @@
 [info_category]: MISC
 [info_track]: https://track.dpip.lol/?id=Introduction
 
-# Welcome to my blog 👋
+# Welcome to my blog 0<span class="hand">/</span>
 
 <a href="https://noskid.today">
 <img src="https://noskid.today/badge/100x30/?website=https://douxx.blog" alt="NoSkid Verification">
@@ -34,3 +34,17 @@ Check for all articles here
       width="800"
       height="500"
 />
+
+
+<style>
+.hand {
+    display: inline-block;
+    animation: moveHand 1s infinite;
+    transform-origin: bottom left;
+}
+@keyframes moveHand {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+</style>
