@@ -100,10 +100,6 @@ async function loadDocStructure() {
 
         buildSidebar(docsStructure);
 
-        const defaultPageId = config.defaultPage || (docsStructure.pages[0] && docsStructure.pages[0].id);
-        if (defaultPageId) {
-            loadPage(defaultPageId);
-        }
     } catch (error) {
         console.error('Error loading documentation structure:', error);
         contentElement.innerHTML = `
@@ -389,7 +385,18 @@ function loadPageFromUrl() {
 
 async function init() {
     await loadDocStructure();
-    loadPageFromUrl();
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('p');
+    
+    if (pageParam && pages[pageParam]) {
+        loadPage(pageParam);
+    } else {
+        const defaultPageId = config.defaultPage || (docsStructure.pages[0] && docsStructure.pages[0].id);
+        if (defaultPageId) {
+            loadPage(defaultPageId);
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
