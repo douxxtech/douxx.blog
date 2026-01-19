@@ -22,7 +22,7 @@ function extractInfoFromMarkdown($fileContent) {
     return $info;
 }
 
-function generateJsonFromMarkdownFiles($directory) {
+function getMarkdownPages($directory) {
     $pages = [];
     $categoryOrder = [];
 
@@ -69,6 +69,12 @@ function generateJsonFromMarkdownFiles($directory) {
         return $idA - $idB;
     });
 
+    return $pages;
+}
+
+function generateJsonFromMarkdownFiles($directory) {
+    $pages = getMarkdownPages($directory);
+
     $jsonData = [
         'title' => 'Douxx.tech | Blog',
         'pages' => $pages
@@ -77,7 +83,64 @@ function generateJsonFromMarkdownFiles($directory) {
     return json_encode($jsonData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 }
 
+function generateRssFromMarkdownFiles($directory) {
+    $pages = getMarkdownPages($directory);
+    $rssFeed = new SimpleXMLElement('<rss version="2.0"></rss>');
+    $channel = $rssFeed->addChild('channel');
+    $channel->addChild('title', 'Douxx.tech | Blog');
+    $channel->addChild('link', 'https://douxx.blog');
+    $channel->addChild('description', 'RSS feed for Douxx.blog blog');
+
+    foreach ($pages as $page) {
+        $filePath = $directory . '/' . $page['file'];
+        $fileContent = file_get_contents($filePath);
+
+        $lines = explode("\n", $fileContent);
+        $lines = array_filter($lines, fn($line) => !preg_match('/^\[info_/', $line));
+        $content = implode("\n", $lines);
+
+        $content = preg_replace('/!\[.*?\]\(.*?\)/', '', $content);
+        $content = preg_replace('/<img[^>]*>/', '', $content);
+
+        $content = preg_replace("/\s+/", " ", $content);
+        $content = trim($content);
+
+        $content = preg_replace('/[`*_#]/', '', $content);
+
+        if (mb_strlen($content) > 200) {
+            $content = mb_substr($content, 0, 200);
+            $lastSpace = mb_strrpos($content, ' ');
+            if ($lastSpace !== false) {
+                $content = mb_substr($content, 0, $lastSpace);
+            }
+            $content .= '…';
+        }
+
+        $fileDate = filemtime($filePath);
+        $pubDate = date(DATE_RSS, $fileDate);
+
+        $item = $channel->addChild('item');
+        $item->addChild('title', htmlspecialchars($page['title']));
+        $item->addChild('link', 'https://douxx.blog/?p=' . $page['file']);
+        $item->addChild('guid', 'https://douxx.blog/?p=' . $page['file']);
+        $item->addChild('pubDate', $pubDate);
+        $desc = $item->addChild('description');
+        $descNode = dom_import_simplexml($desc);
+        $ownerDoc = $descNode->ownerDocument;
+        $descNode->appendChild($ownerDoc->createCDATASection($content));
+    }
+
+    return $rssFeed->asXML();
+}
+
 $directory = __DIR__;
-echo generateJsonFromMarkdownFiles($directory);
+
+if (isset($_GET['rss'])) {
+    header('Content-Type: application/rss+xml; charset=utf-8');
+    echo generateRssFromMarkdownFiles($directory);
+} else {
+    header('Content-Type: application/json; charset=utf-8');
+    echo generateJsonFromMarkdownFiles($directory);
+}
 
 ?>
