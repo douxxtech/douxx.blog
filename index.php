@@ -57,8 +57,7 @@
     <meta name='distribution' content='Global'>
     <meta name='rating' content='General'>
     <meta name='target' content='technology'>
-    <meta name='og:site_name' content="@douxxpi">
-    <meta name='og:email' content='contact@douxx.tech'>
+    <meta name='og:site_name' content="@douxxtech">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
