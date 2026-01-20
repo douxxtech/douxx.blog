@@ -1,4 +1,4 @@
-# Welcome to my blog 👋
+# Welcome to my blog 0/
 
 Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !
 
@@ -8,13 +8,14 @@ This website is based on the [UrlToApp documentation website](https://docs.urlto
 
 If need any help with something, please contact me at [douxx@douxx.xyz](mailto:douxx@douxx.xyz)
 
-<------------------------->
-Check for all articles [here](https://douxx.blog)
-<------------------------->
+<--------------------------
+Check for all articles here
+<--------------------------
 
 ---
 
-### Stats
+### Douxx's blog source code is on github!
+[douxxtech/douxx.blog](https://github.com/douxxtech/douxx.blog)
 
 <img 
       alt="TerminalOgp" 
@@ -25,6 +26,3 @@ Check for all articles [here](https://douxx.blog)
       height="500"
 />
 
-<a align="center" href="https://github.com/douxxtech" target="_blank">
-<img src="https://madeby.douxx.tech"></img>
-</a>
