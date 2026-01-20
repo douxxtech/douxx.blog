@@ -4,17 +4,17 @@
 
 # Welcome to my blog 0<span class="hand">/</span>
 
-Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !
+Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !  
+Here will be posted some tutorials, creations, or thoughts !  
+<br>
 
-Here will be posted some tutorials or.. yea idk some random shit basically.
-
-This website is based on the [UrlToApp documentation website](https://docs.urltoapp.xyz) that I find really cool :)
-
-If need any help with something, please contact me at [douxx@douxx.xyz](mailto:douxx@douxx.xyz)
-
+If you need any help, or just want to chat, feel free to stalk me and DM me on any social listed on [douxx.tech](https://douxx.tech) !
+<br>
 <--------------------------
-Check for all articles here
+Check for all articles here, and enable read mode by clicking the button on the nav bar
 <--------------------------
+<br>
+It is <span id="time">idk</span> ! You clearly have the time to read those articles :3
 
 ---
 
@@ -43,3 +43,12 @@ Check for all articles here
     100% { transform: rotate(0deg); }
 }
 </style>
+
+<script>
+  setInterval(() => {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('time').textContent =
+      `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  }, 1000);
+</script>
