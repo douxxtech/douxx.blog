@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +44,7 @@
     <meta property="og:image" content="https://douxx.tech/assets/img/icon.png" />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="https://douxx.blog">
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="website" />
     <meta name='description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>
     <meta name='copyright' content='douxx.tech'>
     <meta name="robots" content="index, follow">
@@ -53,7 +54,7 @@
     <meta name='reply-to' content='contact@douxx.tech'>
     <meta name='owner' content='douxx'>
     <meta name='url' content='https://douxx.blog'>
-    <meta name='pagename' content='Douxx\'s Blog'>
+    <meta name='pagename' content='Douxx\' s Blog'>
     <meta name='distribution' content='Global'>
     <meta name='rating' content='General'>
     <meta name='target' content='technology'>
@@ -63,8 +64,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <button class="menu-button"><i class="ri-menu-line"></i></button>
@@ -72,10 +76,14 @@
             <i class="ri-news-line"></i>
             <span>Blog ^-^</span>
         </div>
+        
         <div class="search-container">
             <i class="ri-search-line search-icon"></i>
             <input type="text" class="search-input" placeholder="Search articles...">
         </div>
+        <button class="read-mode-toggle" id="readModeToggle" title="Toggle Read Mode">
+            <i class="ri-book-read-line"></i>
+        </button>
     </header>
 
     <div class="content-wrapper">
@@ -100,5 +108,7 @@
 
     <script src="assets/js/loader.js"></script>
     <script src="assets/js/neko.js"></script>
+    <script src="assets/js/readmode.js"></script>
 </body>
+
 </html>
