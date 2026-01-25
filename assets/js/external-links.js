@@ -24,7 +24,6 @@ function showExternalLinkWarning(url) {
     modal.innerHTML = `
         <div class="external-link-overlay"></div>
         <section class="external-link-content">
-            <i class="ri-external-link-line"></i>
             <h3>External Link</h3>
             <p>You are about to leave this site and visit:</p>
             <p class="external-link-url">${url}</p>
