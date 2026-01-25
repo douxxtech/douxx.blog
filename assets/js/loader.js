@@ -285,6 +285,7 @@ async function loadPage(pageId) {
         handleRelativeLinks();
 
         createNavigationButtons(pageId);
+        handleExternalLinks();
         executeScripts(contentElement);
 
     } catch (error) {

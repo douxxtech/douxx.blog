@@ -106,9 +106,10 @@
         </main>
     </div>
 
-    <script src="assets/js/loader.js?"></script>
-    <script src="assets/js/neko.js?"></script>
-    <script src="assets/js/readmode.js?"></script>
+    <script src="assets/js/external-links.js?1"></script>
+    <script src="assets/js/loader.js?1"></script>
+    <script src="assets/js/neko.js?1"></script>
+    <script src="assets/js/readmode.js?1"></script>
 </body>
 
 </html>
