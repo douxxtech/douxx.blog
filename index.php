@@ -66,7 +66,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/css/styles.css?1" rel="stylesheet">
 </head>
 
 <body>
