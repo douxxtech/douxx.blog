@@ -59,12 +59,17 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
       if (!response.ok) throw new Error('Failed to fetch RSS feed');
 
       const rssText = await response.text();
-
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(rssText, "application/xml");
 
-      const items = xmlDoc.querySelectorAll("item");
+      const items = Array.from(xmlDoc.querySelectorAll("item"));
       if (items.length === 0) return;
+
+      items.sort((a, b) => {
+        const dateA = new Date(a.querySelector("pubDate")?.textContent || 0);
+        const dateB = new Date(b.querySelector("pubDate")?.textContent || 0);
+        return dateB - dateA;
+      });
 
       const latest = items[0];
       const title = latest.querySelector("title")?.textContent || "No title";
@@ -81,5 +86,5 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
   }
 
   updateLatestArticle();
-
+  
 </script>
