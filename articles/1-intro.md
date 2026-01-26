@@ -14,7 +14,8 @@ If you need any help, or just want to chat, feel free to stalk me and DM me on a
 Check for all articles here, and enable read mode by clicking the button on the nav bar
 <--------------------------
 <br>
-It is <span id="time">idk</span> ! You clearly have the time to read those articles :3
+It is <span id="time">idk</span> ! You clearly have the time to read those articles :3  
+You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯</span>**
 
 ---
 
@@ -51,4 +52,34 @@ It is <span id="time">idk</span> ! You clearly have the time to read those artic
     document.getElementById('time').textContent =
       `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
   }, 1000);
+
+  async function updateLatestArticle() {
+    try {
+      const response = await fetch('/articles/?rss');
+      if (!response.ok) throw new Error('Failed to fetch RSS feed');
+
+      const rssText = await response.text();
+
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(rssText, "application/xml");
+
+      const items = xmlDoc.querySelectorAll("item");
+      if (items.length === 0) return;
+
+      const latest = items[0];
+      const title = latest.querySelector("title")?.textContent || "No title";
+      const link = latest.querySelector("link")?.textContent || "#";
+
+      const latestArtLink = document.getElementById("latest-art");
+      if (latestArtLink) {
+        latestArtLink.textContent = title;
+        latestArtLink.href = link;
+      }
+    } catch (err) {
+      console.error("Error updating latest article:", err);
+    }
+  }
+
+  updateLatestArticle();
+
 </script>
