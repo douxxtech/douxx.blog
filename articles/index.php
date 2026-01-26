@@ -121,9 +121,8 @@ function generateRssFromMarkdownFiles($directory) {
 
         $item = $channel->addChild('item');
         $item->addChild('title', htmlspecialchars($page['title']));
-        $item->addChild('link', 'https://douxx.blog/?p=' . $page['file']);
-        $item->addChild('guid', 'https://douxx.blog/?p=' . $page['file']);
-        $item->addChild('pubDate', $pubDate);
+        $item->addChild('link', 'https://douxx.blog/?p=' . $page['id']);
+        $item->addChild('guid', 'https://douxx.blog/?p=' . $page['id']); $item->addChild('pubDate', $pubDate);
         $desc = $item->addChild('description');
         $descNode = dom_import_simplexml($desc);
         $ownerDoc = $descNode->ownerDocument;
