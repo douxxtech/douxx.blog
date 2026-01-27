@@ -15,22 +15,17 @@ Check for all articles here, and enable read mode by clicking the button on the 
 <--------------------------
 <br>
 It is <span id="time">idk</span> ! You clearly have the time to read those articles :3  
-You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯</span>**
+You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯</a>**
 
----
-
-### Douxx's blog source code is on github!
-[douxxtech/douxx.blog](https://github.com/douxxtech/douxx.blog)
-
-<img 
-      alt="TerminalOgp" 
-      src="https://togp.xyz?owner=douxxtech&repo=douxx.blog&theme=json-dark-all&cache=false" 
-      type="image/svg+xml" 
-      style="border-radius: 20px; overflow: hidden;"
-      width="800"
-      height="500"
-/>
-
+<details>
+  <summary><code>Quick note about your data</code></summary>
+    <h3 id="alrdisabled" hidden>We already arent tracking your views !</h3>
+    <p>
+    As you can see, there is a views counter at the bottom of each page.  
+    To do this, I'm using my own service, that tracks unique visitors by using your IP address. Note that all data is hosted on a server at my home, and doesn't leave its hard drive.  
+    If you want to not be tracked, please click <a id="notrack" href="#">this link</a>. The setting is permanent, and can be resetted by clearing this site's data. If you wish to request a deletion of any data that may have already been stored, please visit <a href="https://dpip.lol/privacy" target="_blank">dpip.lol/privacy</a>
+    </p>
+</details>
 
 <style>
 .hand {
@@ -46,6 +41,21 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
 </style>
 
 <script>
+
+  const alrdisabled = document.getElementById('alrdisabled');
+
+  if (localStorage.getItem('dpipTrack') === 'false') alrdisabled.toggleAttribute('hidden');;
+  
+  const notrack = document.getElementById('notrack');
+
+  notrack.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    localStorage.setItem('dpipTrack', 'false');
+
+    notrack.textContent = "OK";
+  });
+
   setInterval(() => {
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');

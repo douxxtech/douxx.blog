@@ -19,7 +19,7 @@ let pagesArray = [];
 const renderer = new marked.Renderer();
 const originalBlockquote = renderer.blockquote;
 
-renderer.blockquote = function(quote) {
+renderer.blockquote = function (quote) {
     const calloutMatch = quote.match(/<p>\[!(INFO|NOTE|TIP|IMPORTANT|WARNING|CAUTION|DANGER)\](.*?)(?:<\/p>)?/i);
 
     if (calloutMatch) {
@@ -57,7 +57,7 @@ renderer.blockquote = function(quote) {
 
 marked.setOptions({
     renderer: renderer,
-    highlight: function(code, lang) {
+    highlight: function (code, lang) {
         if (lang && hljs.getLanguage(lang)) {
             return hljs.highlight(code, { language: lang }).value;
         }
@@ -301,8 +301,9 @@ async function loadPage(pageId) {
         navigationElement.innerHTML = '';
     }
 }
-
 async function fetchUniqueViews(trackurl) {
+    if (localStorage.getItem('dpipTrack') === 'false') return;
+
     try {
         const response = await fetch(trackurl);
         if (!response.ok) {
@@ -326,7 +327,6 @@ async function fetchUniqueViews(trackurl) {
         console.error('Error fetching unique views:', error);
     }
 }
-
 
 function handleRelativeLinks() {
     const links = contentElement.querySelectorAll('a');
@@ -405,10 +405,10 @@ function loadPageFromUrl() {
 
 async function init() {
     await loadDocStructure();
-    
+
     const urlParams = new URLSearchParams(window.location.search);
     const pageParam = urlParams.get('p');
-    
+
     if (pageParam && pages[pageParam]) {
         loadPage(pageParam);
     } else {
