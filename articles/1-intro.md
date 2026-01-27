@@ -41,51 +41,63 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
 </style>
 
 <script>
+(function() {
+  if (window.introTimeInterval) {
+    clearInterval(window.introTimeInterval);
+  }
 
-  const alrdisabled = document.getElementById('alrdisabled');
+  var alrdisabled = document.getElementById('alrdisabled');
 
-  if (localStorage.getItem('dpipTrack') === 'false') alrdisabled.toggleAttribute('hidden');;
+  if (localStorage.getItem('dpipTrack') === 'false' && alrdisabled) {
+    alrdisabled.toggleAttribute('hidden');
+  }
   
-  const notrack = document.getElementById('notrack');
+  var notrack = document.getElementById('notrack');
 
-  notrack.addEventListener('click', (e) => {
-    e.preventDefault();
+  if (notrack) {
+    notrack.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.setItem('dpipTrack', 'false');
+      notrack.textContent = "OK";
+    });
+  }
 
-    localStorage.setItem('dpipTrack', 'false');
-
-    notrack.textContent = "OK";
-  });
-
-  setInterval(() => {
-    const now = new Date();
-    const pad = n => String(n).padStart(2, '0');
-    document.getElementById('time').textContent =
-      `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  window.introTimeInterval = setInterval(function() {
+    var timeElement = document.getElementById('time');
+    if (!timeElement) {
+      clearInterval(window.introTimeInterval);
+      return;
+    }
+    
+    var now = new Date();
+    var pad = function(n) { return String(n).padStart(2, '0'); };
+    timeElement.textContent =
+      pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
   }, 1000);
 
   async function updateLatestArticle() {
     try {
-      const response = await fetch('/articles/?rss');
+      var response = await fetch('/articles/?rss');
       if (!response.ok) throw new Error('Failed to fetch RSS feed');
 
-      const rssText = await response.text();
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(rssText, "application/xml");
+      var rssText = await response.text();
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(rssText, "application/xml");
 
-      const items = Array.from(xmlDoc.querySelectorAll("item"));
+      var items = Array.from(xmlDoc.querySelectorAll("item"));
       if (items.length === 0) return;
 
-      items.sort((a, b) => {
-        const dateA = new Date(a.querySelector("pubDate")?.textContent || 0);
-        const dateB = new Date(b.querySelector("pubDate")?.textContent || 0);
+      items.sort(function(a, b) {
+        var dateA = new Date(a.querySelector("pubDate")?.textContent || 0);
+        var dateB = new Date(b.querySelector("pubDate")?.textContent || 0);
         return dateB - dateA;
       });
 
-      const latest = items[0];
-      const title = latest.querySelector("title")?.textContent || "No title";
-      const link = latest.querySelector("link")?.textContent || "#";
+      var latest = items[0];
+      var title = latest.querySelector("title")?.textContent || "No title";
+      var link = latest.querySelector("link")?.textContent || "#";
 
-      const latestArtLink = document.getElementById("latest-art");
+      var latestArtLink = document.getElementById("latest-art");
       if (latestArtLink) {
         latestArtLink.textContent = title;
         latestArtLink.href = link;
@@ -96,5 +108,5 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
   }
 
   updateLatestArticle();
-  
+})();
 </script>
