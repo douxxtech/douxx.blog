@@ -85,11 +85,21 @@ function generateJsonFromMarkdownFiles($directory) {
 
 function generateRssFromMarkdownFiles($directory) {
     $pages = getMarkdownPages($directory);
-    $rssFeed = new SimpleXMLElement('<rss version="2.0"></rss>');
+    
+    $rssFeed = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"></rss>');
     $channel = $rssFeed->addChild('channel');
+    
     $channel->addChild('title', 'Douxx.tech | Blog');
     $channel->addChild('link', 'https://douxx.blog');
-    $channel->addChild('description', 'RSS feed for Douxx.blog blog');
+    $channel->addChild('description', 'RSS feed for Douxx.blog');
+    
+    $atomLink = $channel->addChild('atom:link', '', 'http://www.w3.org/2005/Atom');
+    $atomLink->addAttribute('href', 'https://douxx.blog/?rss');
+    $atomLink->addAttribute('rel', 'self');
+    $atomLink->addAttribute('type', 'application/rss+xml');
+    
+    $channel->addChild('language', 'en-us');
+    $channel->addChild('lastBuildDate', date(DATE_RSS));
 
     foreach ($pages as $page) {
         $filePath = $directory . '/' . $page['file'];
@@ -116,13 +126,22 @@ function generateRssFromMarkdownFiles($directory) {
             $content .= '…';
         }
 
-        $fileDate = filemtime($filePath);
+        $fileDate = filectime($filePath);
         $pubDate = date(DATE_RSS, $fileDate);
 
         $item = $channel->addChild('item');
-        $item->addChild('title', htmlspecialchars($page['title']));
-        $item->addChild('link', 'https://douxx.blog/?p=' . $page['id']);
-        $item->addChild('guid', 'https://douxx.blog/?p=' . $page['id']); $item->addChild('pubDate', $pubDate);
+        $item->addChild('title', htmlspecialchars($page['title'], ENT_XML1, 'UTF-8'));
+        $item->addChild('link', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        
+        $guid = $item->addChild('guid', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        $guid->addAttribute('isPermaLink', 'true');
+        
+        $item->addChild('pubDate', $pubDate);
+        
+        if (!empty($page['category'])) {
+            $item->addChild('category', htmlspecialchars($page['category'], ENT_XML1, 'UTF-8'));
+        }
+        
         $desc = $item->addChild('description');
         $descNode = dom_import_simplexml($desc);
         $ownerDoc = $descNode->ownerDocument;
@@ -135,10 +154,10 @@ function generateRssFromMarkdownFiles($directory) {
 $directory = __DIR__;
 
 if (isset($_GET['rss'])) {
-    header('Content-Type: application/rss+xml; charset=utf-8');
+    header('Content-Type: application/rss+xml');
     echo generateRssFromMarkdownFiles($directory);
 } else {
-    header('Content-Type: application/json; charset=utf-8');
+    header('Content-Type: application/json');
     echo generateJsonFromMarkdownFiles($directory);
 }
 
