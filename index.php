@@ -7,40 +7,38 @@
     <title>Douxx.tech | Blog</title>
     <link href="https://douxx.tech/assets/img/icon.png" rel="icon">
     <?php
+    $defaultTitle = "Douxx.tech | Blog";
+    $defaultDescription = "Your go-to resource for coding tips, tech tutorials, and blog posts about building projects";
+
     if (isset($_GET['p'])) {
         $param = $_GET['p'];
+        $filePath = "./articles/{$param}.md";
 
-        if ($param === '1-intro') {
-            echo "<meta property='og:title' content='Douxx.tech | Blog'>";
-            echo "<meta property='og:description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>";
+        if (file_exists($filePath)) {
+            $fileContent = file_get_contents($filePath);
+
+            preg_match('/\[info_title\]: (.*)/', $fileContent, $titleMatches);
+            preg_match('/\[info_category\]: (.*)/', $fileContent, $categoryMatches);
+            preg_match('/\[info_description\]: (.*)/', $fileContent, $descriptionMatches);
+
+            $title = !empty($titleMatches[1]) ? urldecode($titleMatches[1]) : "Douxx.tech";
+            $category = !empty($categoryMatches[1]) ? urldecode($categoryMatches[1]) : "Blog";
+            $description = !empty($descriptionMatches[1])
+                ? urldecode($descriptionMatches[1])
+                : "Learn more about {$title} in the {$category} section on Douxx.blog!";
+
+            echo "<meta property='og:title' content='{$title} | Douxx.blog'>";
+            echo "<meta property='og:description' content=\"{$description}\">";
         } else {
-            $filePath = "./articles/{$param}.md";
-
-            if (file_exists($filePath)) {
-                $fileContent = file_get_contents($filePath);
-                preg_match('/\[info_title\]: (.*)/', $fileContent, $titleMatches);
-                preg_match('/\[info_category\]: (.*)/', $fileContent, $categoryMatches);
-
-                if (!empty($titleMatches) && !empty($categoryMatches)) {
-                    $title = urldecode($titleMatches[1]);
-                    $category = urldecode($categoryMatches[1]);
-
-                    echo "<meta property='og:title' content='{$category} | Douxx Blog'>";
-                    echo "<meta property='og:description' content=\"Learn more about {$title} on douxx's blog!\">";
-                } else {
-                    echo "<meta property='og:title' content='Douxx.tech | Blog'>";
-                    echo "<meta property='og:description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>";
-                }
-            } else {
-                echo "<meta property='og:title' content='Douxx.tech | Blog'>";
-                echo "<meta property='og:description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>";
-            }
+            echo "<meta property='og:title' content='{$defaultTitle}'>";
+            echo "<meta property='og:description' content='{$defaultDescription}'>";
         }
     } else {
-        echo "<meta property='og:title' content='Douxx.tech | Blog'>";
-        echo "<meta property='og:description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>";
+        echo "<meta property='og:title' content='{$defaultTitle}'>";
+        echo "<meta property='og:description' content='{$defaultDescription}'>";
     }
     ?>
+
     <meta property="og:image" content="https://douxx.tech/assets/img/icon.png" />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="https://douxx.blog">
@@ -76,7 +74,7 @@
             <i class="ri-news-line"></i>
             <span>Blog ^-^</span>
         </div>
-        
+
         <div class="search-container">
             <i class="ri-search-line search-icon"></i>
             <input type="text" class="search-input" placeholder="Search articles...">
