@@ -106,7 +106,6 @@
 
     <script src="assets/js/external-links.js?3"></script>
     <script src="assets/js/loader.js?3"></script>
-    <script src="assets/js/neko.js?3"></script>
     <script src="assets/js/readmode.js?3"></script>
 </body>
 
