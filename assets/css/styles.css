@@ -34,6 +34,16 @@
     scrollbar-color: #4a4540 #1a1816;
 }
 
+::selection {
+    background-color: var(--callout-info-border);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background-color: var(callout-info-border);
+    color: var(--text-primary);
+}
+
 body {
     font-family: "Roboto Mono", monospace;
     background-color: var(--bg-primary);
@@ -52,17 +62,20 @@ body.read-mode .content {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
+    max-width: 680px;
     margin: 0 auto;
+    letter-spacing: 0.01em;
 }
 
 body.read-mode .content h1,
 body.read-mode .content h2,
 body.read-mode .content h3 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 body.read-mode .content p {
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem;
 }
 
 body.read-mode .content code {
