@@ -54,23 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create an Article</title>
+    <title>New Article</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-input: #334155;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -78,284 +65,257 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: rgb(15, 13, 12);
+            color: rgb(235, 230, 225);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
+            padding: 2rem;
             line-height: 1.6;
         }
 
+        ::selection {
+            background-color: rgba(255, 154, 86, 0.3);
+            color: rgb(235, 230, 225);
+        }
+
         .container {
-            background-color: var(--bg-secondary);
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            width: 100%;
             max-width: 800px;
-            overflow: hidden;
+            margin: 0 auto;
         }
 
-        .header {
-            background-color: var(--primary);
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header h2 {
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .form-content {
-            padding: 2rem;
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: rgb(255, 154, 86);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .form-label {
+        label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-        }
-
-        .input-icon {
-            padding-left: 2.75rem !important;
-        }
-
-        input, textarea, button {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            color: rgb(190, 180, 170);
+            font-weight: 400;
         }
 
         input, textarea {
-            background-color: var(--bg-input);
-            color: var(--text-primary);
-            outline: none;
-            border: 2px solid transparent;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgb(28, 26, 24);
+            border: 1px solid rgb(45, 42, 40);
+            border-radius: 4px;
+            color: rgb(235, 230, 225);
+            font-family: inherit;
+            font-size: 0.9375rem;
+            transition: border-color 0.2s ease;
         }
 
         input:focus, textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+            outline: none;
+            border-color: rgb(255, 154, 86);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgb(190, 180, 170);
         }
 
         textarea {
-            min-height: 150px;
+            min-height: 400px;
             resize: vertical;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
         }
 
         button {
-            background-color: var(--primary);
-            color: white;
+            width: 100%;
+            padding: 0.875rem;
+            background-color: rgb(255, 154, 86);
+            color: rgb(15, 13, 12);
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9375rem;
             font-weight: 500;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
+            transition: background-color 0.2s ease;
         }
 
         button:hover {
-            background-color: var(--primary-hover);
+            background-color: rgb(235, 134, 66);
         }
 
-        .preview-container {
-            margin-top: 1.5rem;
+        .preview-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgb(45, 42, 40);
         }
 
-        .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .preview-title {
-            font-weight: 500;
-            color: var(--text-secondary);
+        .preview-label {
+            font-size: 0.875rem;
+            color: rgb(190, 180, 170);
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
         .preview {
-            background-color: var(--bg-input);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            height: 250px;
+            background-color: rgb(20, 18, 17);
+            border: 1px solid rgb(45, 42, 40);
+            border-radius: 4px;
+            padding: 1.5rem;
+            max-height: 500px;
             overflow-y: auto;
         }
 
-        .preview h1, .preview h2, .preview h3, .preview h4, .preview h5, .preview h6 {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
+        .preview h1, .preview h2, .preview h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: rgb(255, 154, 86);
         }
 
-        .preview p, .preview ul, .preview ol {
+        .preview h1 { font-size: 1.75rem; }
+        .preview h2 { font-size: 1.5rem; }
+        .preview h3 { font-size: 1.25rem; }
+
+        .preview p {
             margin-bottom: 1rem;
-        }
-
-        .preview a {
-            color: var(--primary);
         }
 
         .preview code {
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgb(28, 26, 24);
             padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: monospace;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
         }
 
-        .preview blockquote {
-            border-left: 3px solid var(--primary);
-            padding-left: 1rem;
-            margin-left: 0;
-            color: var(--text-secondary);
-        }
-
-        .preview img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .preview table {
-            width: 100%;
-            border-collapse: collapse;
+        .preview pre {
+            background-color: rgb(28, 26, 24);
+            border: 1px solid rgb(45, 42, 40);
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
             margin-bottom: 1rem;
         }
 
-        .preview th, .preview td {
-            border: 1px solid var(--bg-secondary);
-            padding: 0.5rem;
-            text-align: left;
+        .preview pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .preview blockquote {
+            border-left: 3px solid rgb(255, 154, 86);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: rgb(190, 180, 170);
+        }
+
+        .preview a {
+            color: rgb(255, 154, 86);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .preview a:hover {
+            border-bottom-color: rgb(255, 154, 86);
+        }
+
+        .preview ul, .preview ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview li {
+            margin-bottom: 0.5rem;
         }
 
         .success-message {
-            background-color: var(--success);
-            color: white;
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: rgb(16, 185, 129);
             padding: 1rem;
-            border-radius: 0.5rem;
+            border-radius: 4px;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.9375rem;
         }
 
-        .error-message {
-            background-color: var(--error);
-            color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
 
-        @media (max-width: 640px) {
-            .form-content {
-                padding: 1.5rem;
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            textarea {
+                min-height: 300px;
             }
 
             .preview {
-                height: 200px;
+                max-height: 300px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <i class="ri-article-line ri-lg"></i>
-            <h2>Create an Article</h2>
-        </div>
+        <h1>New Article</h1>
 
-        <div class="form-content">
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($newFilename)): ?>
-            <div class="success-message">
-                <i class="ri-check-line"></i>
-                <span>File saved successfully as <?php echo $newFilename; ?></span>
+        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($newFilename)): ?>
+        <div class="success-message">
+            ✓ File saved successfully as <?php echo htmlspecialchars($newFilename); ?>
+        </div>
+        <?php endif; ?>
+
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter password" required>
             </div>
-            <?php endif; ?>
 
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <div class="input-wrapper">
-                        <i class="ri-lock-line"></i>
-                        <input type="password" name="password" id="password" class="input-icon" placeholder="Enter your password" required>
-                    </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="Article title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" name="category" id="category" placeholder="Category name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="markdown-content">Content</label>
+                <textarea name="content" id="markdown-content" placeholder="Write your article in Markdown..." required></textarea>
+            </div>
+
+            <div class="preview-section">
+                <span class="preview-label">Preview</span>
+                <div class="preview" id="preview">
+                    <p style="color: rgb(190, 180, 170);">Start typing to see preview...</p>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="title">Title</label>
-                    <div class="input-wrapper">
-                        <i class="ri-heading"></i>
-                        <input type="text" name="title" id="title" class="input-icon" placeholder="Article title" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="category">Category</label>
-                    <div class="input-wrapper">
-                        <i class="ri-price-tag-3-line"></i>
-                        <input type="text" name="category" id="category" class="input-icon" placeholder="Article category" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="markdown-content">Content</label>
-                    <textarea name="content" id="markdown-content" placeholder="Write your article in Markdown" required></textarea>
-
-                    <div class="preview-container">
-                        <div class="preview-header">
-                            <span class="preview-title">Preview</span>
-                            <i class="ri-eye-line"></i>
-                        </div>
-                        <div class="preview" id="preview"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit">
-                        <i class="ri-save-line"></i>
-                        <span>Save Article</span>
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="form-group" style="margin-top: 2rem;">
+                <button type="submit">Save Article</button>
+            </div>
+        </form>
     </div>
 
     <script>
-        document.getElementById('markdown-content').addEventListener('input', function() {
-            document.getElementById('preview').innerHTML = marked.parse(this.value);
+        const markdownContent = document.getElementById('markdown-content');
+        const preview = document.getElementById('preview');
+
+        markdownContent.addEventListener('input', function() {
+            const content = this.value.trim();
+            if (content) {
+                preview.innerHTML = marked.parse(content);
+            } else {
+                preview.innerHTML = '<p style="color: rgb(190, 180, 170);">Start typing to see preview...</p>';
+            }
         });
     </script>
 </body>
