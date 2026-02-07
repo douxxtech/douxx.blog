@@ -64,7 +64,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
-    <link href="assets/css/styles.css?2" rel="stylesheet">
+    <link href="assets/css/styles.css?3" rel="stylesheet">
 </head>
 
 <body>
@@ -104,10 +104,10 @@
         </main>
     </div>
 
-    <script src="assets/js/external-links.js?2"></script>
-    <script src="assets/js/loader.js?2"></script>
-    <script src="assets/js/neko.js?2"></script>
-    <script src="assets/js/readmode.js?2"></script>
+    <script src="assets/js/external-links.js?3"></script>
+    <script src="assets/js/loader.js?3"></script>
+    <script src="assets/js/neko.js?3"></script>
+    <script src="assets/js/readmode.js?3"></script>
 </body>
 
 </html>
