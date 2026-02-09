@@ -134,12 +134,33 @@ function buildSidebar(structure) {
 
         const menuItem = document.createElement('div');
         menuItem.className = 'menu-item';
-        menuItem.textContent = page.title;
+        
+        if (page.date) {
+            const dateEl = document.createElement('span');
+            dateEl.className = 'menu-item-date';
+            dateEl.textContent = formatDate(page.date);
+            
+            const titleEl = document.createElement('span');
+            titleEl.className = 'menu-item-title';
+            titleEl.textContent = page.title;
+            
+            menuItem.appendChild(dateEl);
+            menuItem.appendChild(titleEl);
+        } else {
+            menuItem.textContent = page.title;
+        }
+        
         menuItem.dataset.pageId = page.id;
         menuItem.addEventListener('click', () => loadPage(page.id));
 
         sidebarMenu.appendChild(menuItem);
     });
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { month: 'short', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
 }
 
 function isURL(str) {

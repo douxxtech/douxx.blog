@@ -298,19 +298,35 @@ header {
     transition: background-color 0.2s;
     font-size: 0.95rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
 }
 
-.menu-item:hover {
-    background-color: var(--bg-tertiary);
+.menu-item-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.menu-item-title {
+    color: var(--text-primary);
 }
 
 .menu-item.active {
     border-left: 3px solid var(--accent);
     background-color: var(--bg-tertiary);
-    color: var(--accent);
     font-weight: 500;
     padding-left: 17px;
+}
+
+.menu-item.active .menu-item-title {
+    color: var(--accent);
+}
+
+.menu-item.active .menu-item-date {
+    color: var(--accent);
+    opacity: 0.8;
 }
 
 .content h1 {

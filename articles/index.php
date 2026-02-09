@@ -42,12 +42,15 @@ function getMarkdownPages($directory)
             $fileContent = file_get_contents($filePath);
             $info = extractInfoFromMarkdown($fileContent);
 
+            $date = !empty($info['date']) ? $info['date'] : date('Y-m-d', filemtime($filePath));
+
             $page = [
                 'id' => pathinfo($entry, PATHINFO_FILENAME),
                 'title' => $info['title'],
                 'file' => $entry,
                 'category' => $info['category'],
-                'trackurl' => $info['track']
+                'trackurl' => $info['track'],
+                'date' => $date
             ];
 
             $pages[] = $page;
@@ -66,9 +69,7 @@ function getMarkdownPages($directory)
             return $indexA - $indexB;
         }
 
-        $idA = (int)preg_replace('/^(\d+)-.+$/', '$1', $a['id']);
-        $idB = (int)preg_replace('/^(\d+)-.+$/', '$1', $b['id']);
-        return $idA - $idB;
+        return strtotime($b['date']) - strtotime($a['date']);
     });
 
     return $pages;
@@ -175,5 +176,3 @@ if (isset($_GET['rss'])) {
     header('Content-Type: application/json');
     echo generateJsonFromMarkdownFiles($directory);
 }
-
-?>
