@@ -1,19 +1,18 @@
 [info_title]: Introduction
 [info_category]: MISC
+[info_date]: 2025-03-05
 [info_track]: https://track.dpip.lol/?id=Introduction
 
 # Welcome to my blog 0<span class="hand">/</span>
 
 Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !  
 Here will be posted some tutorials, creations, or thoughts !  
-<br>
 
 If you need any help, or just want to chat, feel free to stalk me and DM me on any social listed on [douxx.tech](https://douxx.tech) !
-<br>
-<--------------------------
-Check for all articles here, and enable read mode by clicking the button on the nav bar
-<--------------------------
-<br>
+
+> [!NOTE] You can enable read mode and dyslexia mode by toggling the buttons on top of this website.  
+> Check all articles on the sidebar !
+
 It is <span id="time">idk</span> ! You clearly have the time to read those articles :3  
 You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯</a>**
 
