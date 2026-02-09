@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 const PASSWORD = 'ThatOnePwd';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
