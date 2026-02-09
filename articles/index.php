@@ -5,7 +5,8 @@ function extractInfoFromMarkdown($fileContent)
     $info = [
         'title' => '',
         'category' => '',
-        'track' => ''
+        'track' => '',
+        'date' => ''
     ];
 
     if (preg_match('/\[info_title\]: (.+)/', $fileContent, $matches)) {
@@ -18,6 +19,10 @@ function extractInfoFromMarkdown($fileContent)
 
     if (preg_match('/\[info_track\]: (.+)/', $fileContent, $matches)) {
         $info['track'] = urldecode($matches[1]);
+    }
+
+    if (preg_match('/\[info_date\]: (.+)/', $fileContent, $matches)) {
+        $info['date'] = urldecode($matches[1]);
     }
 
     return $info;
