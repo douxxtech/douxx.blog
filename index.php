@@ -64,30 +64,40 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+
     <link href="assets/css/styles.css?3" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <button class="menu-button"><i class="ri-menu-line"></i></button>
-        <div class="logo">
-            <i class="ri-news-line"></i>
-            <span>Blog ^-^</span>
+        <div class="header-left">
+            <button class="menu-button"><i class="ri-menu-line"></i></button>
+            <div class="logo">
+                <i class="ri-news-line"></i>
+                <span id="project-name">Blog</span>
+            </div>
         </div>
 
         <div class="search-container">
             <i class="ri-search-line search-icon"></i>
             <input type="text" class="search-input" placeholder="Search articles...">
         </div>
-        <button class="read-mode-toggle" id="readModeToggle" title="Toggle Read Mode">
-            <i class="ri-book-read-line"></i>
-        </button>
+
+        <div class="header-right">
+            <button class="dyslexia-toggle" id="dyslexiaToggle" title="Toggle Dyslexia Mode">
+                <i class="ri-font-size"></i>
+            </button>
+            <button class="read-mode-toggle" id="readModeToggle" title="Toggle Read Mode">
+                <i class="ri-book-read-line"></i>
+            </button>
+        </div>
     </header>
 
     <div class="content-wrapper">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <div id="project-name">Project Name</div>
+                <div id="project-name-mobile">Blog</div> <!-- only shown on mobile -->
             </div>
             <nav class="sidebar-menu" id="sidebar-menu">
             </nav>

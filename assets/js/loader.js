@@ -7,6 +7,7 @@ const sidebarMenu = document.getElementById('sidebar-menu');
 const contentElement = document.getElementById('content');
 const navigationElement = document.getElementById('page-navigation');
 const projectNameElement = document.getElementById('project-name');
+const projectNameMobileElement = document.getElementById('project-name-mobile');
 const menuButton = document.querySelector('.menu-button');
 const sidebar = document.querySelector('.sidebar');
 const searchInput = document.querySelector('.search-input');
@@ -93,8 +94,9 @@ async function loadDocStructure() {
         }
 
         docsStructure = await response.json();
-        projectNameElement.textContent = docsStructure.title || 'Documentation';
-        document.title = docsStructure.title || 'Documentation';
+        projectNameElement.textContent = docsStructure.title || 'Blog';
+        projectNameMobileElement.textContent = docsStructure.title || 'Blog';
+        document.title = docsStructure.title || 'Blog';
 
         pagesArray = docsStructure.pages;
 

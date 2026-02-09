@@ -82,6 +82,28 @@ body.read-mode .content code {
     font-family: 'Courier New', Courier, monospace;
 }
 
+body.dyslexia-mode,
+body.dyslexia-mode .content,
+body.dyslexia-mode .content h1,
+body.dyslexia-mode .content h2,
+body.dyslexia-mode .content h3,
+body.dyslexia-mode .content p,
+body.dyslexia-mode .content li,
+body.dyslexia-mode .sidebar,
+body.dyslexia-mode .menu-item,
+body.dyslexia-mode .search-input,
+body.dyslexia-mode .logo {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', cursive !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    line-height: 1.8;
+}
+
+body.dyslexia-mode .content code,
+body.dyslexia-mode .content pre code {
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -113,21 +135,30 @@ header {
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    gap: 12px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .menu-button {
@@ -136,13 +167,22 @@ header {
     border: none;
     color: var(--text-primary);
     cursor: pointer;
-    margin-right: 15px;
     font-size: 24px;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .search-container {
-    margin-left: auto;
     position: relative;
+    flex: 1;
+    max-width: 300px;
 }
 
 .search-input {
@@ -151,7 +191,7 @@ header {
     color: var(--text-primary);
     padding: 8px 12px;
     border-radius: 4px;
-    width: 200px;
+    width: 100%;
     font-size: 0.9rem;
     padding-left: 32px;
     transition: all 0.2s ease;
@@ -164,14 +204,15 @@ header {
     transform: translateY(-50%);
     color: var(--text-secondary);
     font-size: 16px;
+    pointer-events: none;
 }
 
 .search-input::placeholder {
     color: var(--text-secondary);
 }
 
-.read-mode-toggle {
-    margin-left: 12px;
+.read-mode-toggle,
+.dyslexia-toggle {
     background-color: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
@@ -184,15 +225,18 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 18px;
+    flex-shrink: 0;
 }
 
-.read-mode-toggle:hover {
+.read-mode-toggle:hover,
+.dyslexia-toggle:hover {
     background-color: var(--bg-primary);
     border-color: var(--accent);
     color: var(--accent);
 }
 
-.read-mode-toggle.active {
+.read-mode-toggle.active,
+.dyslexia-toggle.active {
     background-color: var(--accent);
     color: rgb(15, 13, 12);
     border-color: var(--accent);
@@ -232,6 +276,7 @@ header {
     padding: 20px;
     border-bottom: 1px solid var(--border-color);
     font-weight: bold;
+    display: none;
 }
 
 .sidebar-menu {
@@ -539,6 +584,44 @@ header {
 }
 
 @media (max-width: 768px) {
+    header {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .header-left {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo i {
+        flex-shrink: 0;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .search-container {
+        max-width: none;
+        flex: 1;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .read-mode-toggle,
+    .dyslexia-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
     .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
@@ -549,13 +632,14 @@ header {
         transform: translateX(0);
     }
 
+    .sidebar-header {
+        display: block;
+    }
+
     .main-content {
         margin-left: 0;
         max-width: 100%;
-    }
-
-    .menu-button {
-        display: block;
+        padding: 15px;
     }
 
     .page-navigation {
@@ -565,6 +649,18 @@ header {
 
     .nav-button.prev, .nav-button.next {
         min-width: 100px;
+    }
+
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.3rem;
+    }
+
+    .content h3 {
+        font-size: 1.1rem;
     }
 
     * {
