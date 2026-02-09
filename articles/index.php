@@ -91,11 +91,9 @@ function generateRssFromMarkdownFiles($directory)
 {
     $pages = getMarkdownPages($directory);
 
-    usort($pages, function ($a, $b) use ($directory) {
-        $fileA = $directory . '/' . $a['file'];
-        $fileB = $directory . '/' . $b['file'];
-        $timeA = filemtime($fileA);
-        $timeB = filemtime($fileB);
+    usort($pages, function ($a, $b) {
+        $timeA = strtotime($a['date']);
+        $timeB = strtotime($b['date']);
         return $timeB - $timeA;
     });
 
@@ -142,8 +140,7 @@ function generateRssFromMarkdownFiles($directory)
             $content .= '…';
         }
 
-        $fileDate = filemtime($filePath);
-        $pubDate = date(DATE_RSS, $fileDate);
+        $pubDate = date(DATE_RSS, strtotime($page['date']));
 
         $item = $channel->addChild('item');
         $item->addChild('title', htmlspecialchars($page['title'], ENT_XML1, 'UTF-8'));

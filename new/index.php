@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $metadata = "[info_title]: " . urlencode($title) . "\n";
     $metadata .= "[info_category]: " . urlencode($category) . "\n";
+    $metadata .= "[info_date]: " . date('Y-m-d') . "\n";
     $metadata .= "[info_track]: https://track.dpip.lol/?id=" . urlencode($title) . "\n\n";
 
     if (file_put_contents($newFilePath, $metadata . $content) === false) {
