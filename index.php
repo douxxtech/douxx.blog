@@ -20,12 +20,15 @@
             preg_match('/\[info_title\]: (.*)/', $fileContent, $titleMatches);
             preg_match('/\[info_category\]: (.*)/', $fileContent, $categoryMatches);
             preg_match('/\[info_description\]: (.*)/', $fileContent, $descriptionMatches);
+            preg_match('/!\[hero\]\((.*?)\)/', $fileContent, $heroMatches);
+
 
             $title = !empty($titleMatches[1]) ? urldecode($titleMatches[1]) : "Douxx.tech";
             $category = !empty($categoryMatches[1]) ? urldecode($categoryMatches[1]) : "Blog";
             $description = !empty($descriptionMatches[1])
                 ? urldecode($descriptionMatches[1])
                 : "Learn more about {$title} in the {$category} section on Douxx.blog!";
+            $ogImage = !empty($heroMatches[1]) ? $heroMatches[1] : "https://douxx.tech/assets/img/icon.png";
 
             echo "<meta property='og:title' content='{$title} | Douxx.blog'>";
             echo "<meta property='og:description' content=\"{$description}\">";
@@ -39,8 +42,8 @@
     }
     ?>
 
-    <meta property="og:image" content="https://douxx.tech/assets/img/icon.png" />
-    <meta name="twitter:card" content="summary" />
+    <?php echo "<meta property='og:image' content='{$ogImage}' />"; ?>
+    <?php echo "<meta name='twitter:card' content='" . (!empty($heroMatches[1]) ? "summary_large_image" : "summary") . "' />"; ?>
     <meta property="og:url" content="https://douxx.blog">
     <meta property="og:type" content="website" />
     <meta name='description' content='Here will be posted some tutorials or.. yea idk some random shit basically.'>
