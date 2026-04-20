@@ -1,6 +1,12 @@
 const readModeToggle = document.getElementById('readModeToggle');
 const dyslexiaToggle = document.getElementById('dyslexiaToggle');
+const lightModeToggle = document.getElementById('lightModeToggle');
 const body = document.body;
+
+if (localStorage.getItem('lightMode') === 'enabled') {
+    body.classList.add('light-mode');
+    lightModeToggle.classList.add('active');
+}
 
 if (localStorage.getItem('readMode') === 'enabled') {
     body.classList.add('read-mode');
@@ -31,5 +37,16 @@ dyslexiaToggle.addEventListener('click', () => {
         localStorage.setItem('dyslexiaMode', 'enabled');
     } else {
         localStorage.removeItem('dyslexiaMode');
+    }
+});
+
+lightModeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    lightModeToggle.classList.toggle('active');
+
+    if (body.classList.contains('light-mode')) {
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        localStorage.removeItem('lightMode');
     }
 });

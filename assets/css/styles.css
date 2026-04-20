@@ -8,8 +8,17 @@
     --accent-dim: rgb(235, 134, 66);
     --border-color: rgb(45, 42, 40);
     --sidebar-width: 280px;
-    --header-height: 60px;
+    --header-height: 60px; 
 
+    --accent-visited: rgb(220, 130, 80);
+    --accent-text: rgb(15, 13, 12);
+    --error: rgb(255, 100, 73);
+    --error-bg: rgba(255, 100, 73, 0.1);
+    --error-border: rgba(255, 100, 73, 0.2);
+
+    --scrollbar-track: #1a1816;
+    --scrollbar-thumb: #4a4540;
+    --scrollbar-hover: #5a5550;
     --callout-info-bg: rgba(255, 154, 86, 0.07);
     --callout-info-border: rgba(255, 154, 86, 0.28);
     --callout-note-bg: rgba(255, 154, 86, 0.07);
@@ -26,12 +35,46 @@
     --callout-danger-border: rgba(255, 100, 80, 0.38);
 }
 
+body.light-mode {
+    --bg-primary: rgb(245, 243, 240);
+    --bg-secondary: rgb(236, 234, 230);
+    --bg-tertiary: rgb(226, 223, 219);
+    --text-primary: rgb(26, 23, 20);
+    --text-secondary: rgb(107, 95, 85);
+    --border-color: rgb(204, 200, 194);
+    --accent: rgb(184, 92, 26);
+    --accent-dim: rgb(160, 75, 18);
+    --accent-visited: rgb(150, 70, 15);
+    --accent-text: rgb(245, 243, 240);
+    --error: rgb(200, 60, 40);
+    --error-bg: rgba(200, 60, 40, 0.08);
+    --error-border: rgba(200, 60, 40, 0.2);
+
+    --scrollbar-track: #e2dfdb;
+    --scrollbar-thumb: #b8b2aa;
+    --scrollbar-hover: #a09890;
+    --callout-info-bg: rgba(184, 92, 26, 0.07);
+    --callout-info-border: rgba(184, 92, 26, 0.25);
+    --callout-note-bg: rgba(184, 92, 26, 0.07);
+    --callout-note-border: rgba(184, 92, 26, 0.25);
+    --callout-tip-bg: rgba(184, 120, 30, 0.07);
+    --callout-tip-border: rgba(184, 120, 30, 0.25);
+    --callout-important-bg: rgba(184, 120, 30, 0.09);
+    --callout-important-border: rgba(184, 120, 30, 0.35);
+    --callout-warning-bg: rgba(184, 120, 30, 0.09);
+    --callout-warning-border: rgba(184, 120, 30, 0.35);
+    --callout-caution-bg: rgba(184, 120, 30, 0.09);
+    --callout-caution-border: rgba(184, 120, 30, 0.35);
+    --callout-danger-bg: rgba(200, 60, 40, 0.09);
+    --callout-danger-border: rgba(200, 60, 40, 0.35);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: #4a4540 #1a1816;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 ::selection {
@@ -110,18 +153,18 @@ body.dyslexia-mode .content pre code {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1816;
+    background: var(--scrollbar-track);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #4a4540;
+    background: var(--scrollbar-thumb);
     border-radius: 4px;
-    transition: background 0.2s ease;
+    transition: background 0.15s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #5a5550;
+    background: var(--scrollbar-hover);
 }
 
 .horizontal-scroll {
@@ -141,7 +184,6 @@ header {
     top: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     gap: 12px;
 }
 
@@ -194,7 +236,7 @@ header {
     width: 100%;
     font-size: 0.9rem;
     padding-left: 32px;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .search-icon {
@@ -212,7 +254,8 @@ header {
 }
 
 .read-mode-toggle,
-.dyslexia-toggle {
+.dyslexia-toggle,
+.light-mode-toggle {
     background-color: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
@@ -220,7 +263,7 @@ header {
     height: 36px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,16 +272,19 @@ header {
 }
 
 .read-mode-toggle:hover,
-.dyslexia-toggle:hover {
+.dyslexia-toggle:hover,
+.light-mode-toggle:hover {
+
     background-color: var(--bg-primary);
     border-color: var(--accent);
     color: var(--accent);
 }
 
 .read-mode-toggle.active,
-.dyslexia-toggle.active {
+.dyslexia-toggle.active,
+.light-mode-toggle.active {
     background-color: var(--accent);
-    color: rgb(15, 13, 12);
+    color: var(--accent-text);
     border-color: var(--accent);
 }
 
@@ -269,7 +315,6 @@ header {
     position: fixed;
     top: var(--header-height);
     left: 0;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-header {
@@ -295,7 +340,7 @@ header {
 .menu-item {
     padding: 8px 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.15s ease;
     font-size: 0.95rem;
     display: flex;
     flex-direction: column;
@@ -385,31 +430,30 @@ header {
     color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .content a:hover {
     border-bottom-color: var(--accent);
-    color: #ff9a56;
+    color: var(--accent-dim);
 }
 
 .content a:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 154, 86, 0.3);
     border-radius: 2px;
 }
 
 .content a:active {
-    color: #ff8a46;
+    color: var(--accent-dim);
 }
 
 .content a:visited {
-    color: #ffaa76;
+    color: var(--accent-visited);
 }
 
 .content a:visited:hover {
-    color: #ffba86;
-    border-bottom-color: #ffaa76;
+    color: var(--accent-dim);
+    border-bottom-color: var(--accent-visited);
 }
 
 .content code {
@@ -451,7 +495,6 @@ header {
     margin: 1rem 0;
     display: block;
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .callout {
@@ -461,7 +504,6 @@ header {
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .callout i {
@@ -522,9 +564,9 @@ header {
 }
 
 .error {
-    color: #ff6449;
-    background-color: rgba(255, 100, 73, 0.1);
-    border: 1px solid rgba(255, 100, 73, 0.2);
+    color: var(--error);
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
     border-radius: 5px;
     padding: 1rem;
     margin-bottom: 1.25rem;
@@ -548,7 +590,7 @@ header {
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s ease;
     text-decoration: none;
     min-width: 120px;
 }
@@ -640,7 +682,7 @@ header {
 
     .sidebar {
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        transition: transform 0.15s ease;
         z-index: 99;
     }
 

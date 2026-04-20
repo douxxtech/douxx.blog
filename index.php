@@ -69,7 +69,7 @@
         rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
-    <link href="assets/css/styles.css?4" rel="stylesheet">
+    <link href="assets/css/styles.css?5" rel="stylesheet">
 </head>
 
 <body>
@@ -94,6 +94,9 @@
             <button class="read-mode-toggle" id="readModeToggle" title="Toggle Read Mode">
                 <i class="ri-book-read-line"></i>
             </button>
+            <button class="light-mode-toggle" id="lightModeToggle" title="Light mode">
+                <i class="ri-sun-line"></i>
+            </button>
         </div>
     </header>
 
@@ -117,9 +120,9 @@
         </main>
     </div>
 
-    <script src="assets/js/external-links.js?4"></script>
-    <script src="assets/js/loader.js?4"></script>
-    <script src="assets/js/readmode.js?4"></script>
+    <script src="assets/js/external-links.js?5"></script>
+    <script src="assets/js/loader.js?5"></script>
+    <script src="assets/js/toggles.js?5"></script>
 </body>
 
 </html>
