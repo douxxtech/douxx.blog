@@ -236,7 +236,6 @@ header {
     width: 100%;
     font-size: 0.9rem;
     padding-left: 32px;
-    transition: all 0.15s ease;
 }
 
 .search-icon {
