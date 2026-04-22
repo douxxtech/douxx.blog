@@ -89,11 +89,10 @@
                 <i class="ri-news-line"></i>
                 <span id="project-name">Blog</span>
             </div>
-        </div>
-
-        <div class="search-container">
-            <i class="ri-search-line search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search articles...">
+            <div class="search-container">
+                <i class="ri-search-line search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search articles...">
+            </div>
         </div>
 
         <div class="header-right">
