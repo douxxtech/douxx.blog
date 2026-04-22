@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::selection {
+    background-color: var(--callout-info-border);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background-color: var(--callout-info-border);
+    color: var(--text-primary);
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover);
+}
+
+.horizontal-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.error {
+    color: var(--error);
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+}

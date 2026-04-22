@@ -1,0 +1,96 @@
+@media (min-width: 768px) {
+    .content img.large {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .header-left {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo i {
+        flex-shrink: 0;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .search-container {
+        max-width: none;
+        flex: 1;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .read-mode-toggle,
+    .dyslexia-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.15s ease;
+        z-index: 99;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .page-navigation {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .nav-button.prev, .nav-button.next {
+        min-width: 100px;
+    }
+
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.3rem;
+    }
+
+    .content h3 {
+        font-size: 1.1rem;
+    }
+
+    * {
+        scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}

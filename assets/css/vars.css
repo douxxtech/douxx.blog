@@ -1,0 +1,70 @@
+:root {
+    --bg-primary: rgb(15, 13, 12);
+    --bg-secondary: rgb(20, 18, 17);
+    --bg-tertiary: rgb(28, 26, 24);
+    --text-primary: rgb(235, 230, 225);
+    --text-secondary: rgb(190, 180, 170);
+    --accent: rgb(255, 154, 86);
+    --accent-dim: rgb(235, 134, 66);
+    --border-color: rgb(45, 42, 40);
+    --sidebar-width: 280px;
+    --header-height: 60px;
+
+    --accent-visited: rgb(220, 130, 80);
+    --accent-text: rgb(15, 13, 12);
+    --error: rgb(255, 100, 73);
+    --error-bg: rgba(255, 100, 73, 0.1);
+    --error-border: rgba(255, 100, 73, 0.2);
+
+    --scrollbar-track: #1a1816;
+    --scrollbar-thumb: #4a4540;
+    --scrollbar-hover: #5a5550;
+    --callout-info-bg: rgba(255, 154, 86, 0.07);
+    --callout-info-border: rgba(255, 154, 86, 0.28);
+    --callout-note-bg: rgba(255, 154, 86, 0.07);
+    --callout-note-border: rgba(255, 154, 86, 0.28);
+    --callout-tip-bg: rgba(255, 200, 120, 0.07);
+    --callout-tip-border: rgba(255, 200, 120, 0.28);
+    --callout-important-bg: rgba(255, 180, 100, 0.09);
+    --callout-important-border: rgba(255, 180, 100, 0.38);
+    --callout-warning-bg: rgba(255, 180, 100, 0.09);
+    --callout-warning-border: rgba(255, 180, 100, 0.38);
+    --callout-caution-bg: rgba(255, 180, 100, 0.09);
+    --callout-caution-border: rgba(255, 180, 100, 0.38);
+    --callout-danger-bg: rgba(255, 100, 80, 0.09);
+    --callout-danger-border: rgba(255, 100, 80, 0.38);
+}
+
+body.light-mode {
+    --bg-primary: rgb(245, 243, 240);
+    --bg-secondary: rgb(236, 234, 230);
+    --bg-tertiary: rgb(226, 223, 219);
+    --text-primary: rgb(26, 23, 20);
+    --text-secondary: rgb(107, 95, 85);
+    --border-color: rgb(204, 200, 194);
+    --accent: rgb(184, 92, 26);
+    --accent-dim: rgb(160, 75, 18);
+    --accent-visited: rgb(150, 70, 15);
+    --accent-text: rgb(245, 243, 240);
+    --error: rgb(200, 60, 40);
+    --error-bg: rgba(200, 60, 40, 0.08);
+    --error-border: rgba(200, 60, 40, 0.2);
+
+    --scrollbar-track: #e2dfdb;
+    --scrollbar-thumb: #b8b2aa;
+    --scrollbar-hover: #a09890;
+    --callout-info-bg: rgba(184, 92, 26, 0.07);
+    --callout-info-border: rgba(184, 92, 26, 0.25);
+    --callout-note-bg: rgba(184, 92, 26, 0.07);
+    --callout-note-border: rgba(184, 92, 26, 0.25);
+    --callout-tip-bg: rgba(184, 120, 30, 0.07);
+    --callout-tip-border: rgba(184, 120, 30, 0.25);
+    --callout-important-bg: rgba(184, 120, 30, 0.09);
+    --callout-important-border: rgba(184, 120, 30, 0.35);
+    --callout-warning-bg: rgba(184, 120, 30, 0.09);
+    --callout-warning-border: rgba(184, 120, 30, 0.35);
+    --callout-caution-bg: rgba(184, 120, 30, 0.09);
+    --callout-caution-border: rgba(184, 120, 30, 0.35);
+    --callout-danger-bg: rgba(200, 60, 40, 0.09);
+    --callout-danger-border: rgba(200, 60, 40, 0.35);
+}

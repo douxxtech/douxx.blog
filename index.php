@@ -9,6 +9,7 @@
     <?php
     $defaultTitle = "Douxx.tech | Blog";
     $defaultDescription = "Your go-to resource for coding tips, tech tutorials, and blog posts about building projects";
+    $defaultImage = "https://douxx.tech/assets/img/icon.png";
 
     if (isset($_GET['p'])) {
         $param = $_GET['p'];
@@ -28,13 +29,15 @@
             $description = !empty($descriptionMatches[1])
                 ? urldecode($descriptionMatches[1])
                 : "Learn more about {$title} in the {$category} section on Douxx.blog!";
-            $ogImage = !empty($heroMatches[1]) ? $heroMatches[1] : "https://douxx.tech/assets/img/icon.png";
+            $ogImage = !empty($heroMatches[1]) ? $heroMatches[1] : $defaultImage;
 
             echo "<meta property='og:title' content='{$title} | Douxx.blog'>";
             echo "<meta property='og:description' content=\"{$description}\">";
+            echo "<meta property='og:image' content='{$ogImage}' />";
         } else {
             echo "<meta property='og:title' content='{$defaultTitle}'>";
             echo "<meta property='og:description' content='{$defaultDescription}'>";
+            echo "<meta property='og:image' content='{$defaultImage}' />";
         }
     } else {
         echo "<meta property='og:title' content='{$defaultTitle}'>";
@@ -42,7 +45,6 @@
     }
     ?>
 
-    <?php echo "<meta property='og:image' content='{$ogImage}' />"; ?>
     <?php echo "<meta name='twitter:card' content='" . (!empty($heroMatches[1]) ? "summary_large_image" : "summary") . "' />"; ?>
     <meta property="og:url" content="https://douxx.blog">
     <meta property="og:type" content="website" />
@@ -69,7 +71,13 @@
         rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
-    <link href="assets/css/styles.css?7" rel="stylesheet">
+    <link href="assets/css/vars.css?8" rel="stylesheet">
+    <link href="assets/css/base.css?8" rel="stylesheet">
+    <link href="assets/css/layout.css?8" rel="stylesheet">
+    <link href="assets/css/content.css?8" rel="stylesheet">
+    <link href="assets/css/modes.css?8" rel="stylesheet">
+    <link href="assets/css/navigation.css?8" rel="stylesheet">
+    <link href="assets/css/responsive.css?8" rel="stylesheet">
 </head>
 
 <body>
@@ -120,9 +128,13 @@
         </main>
     </div>
 
-    <script src="assets/js/external-links.js?7"></script>
+    <script src="assets/js/config.js?7"></script>
+    <script src="assets/js/renderer.js?7"></script>
+    <script src="assets/js/sidebar.js?7"></script>
+    <script src="assets/js/navigation.js?7"></script>
     <script src="assets/js/loader.js?7"></script>
     <script src="assets/js/toggles.js?7"></script>
+    <script src="assets/js/external-links.js?7"></script>
 </body>
 
 </html>

@@ -1,0 +1,199 @@
+header {
+    height: var(--header-height);
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    gap: 12px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.menu-button {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-input {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.9rem;
+    padding-left: 32px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.read-mode-toggle,
+.dyslexia-toggle,
+.light-mode-toggle {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.read-mode-toggle:hover,
+.dyslexia-toggle:hover,
+.light-mode-toggle:hover {
+    background-color: var(--bg-primary);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.read-mode-toggle.active,
+.dyslexia-toggle.active,
+.light-mode-toggle.active {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    margin-top: var(--header-height);
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    margin-left: var(--sidebar-width);
+    max-width: calc(100% - var(--sidebar-width));
+}
+
+.content-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: bold;
+    display: none;
+}
+
+.sidebar-menu {
+    padding: 10px 0;
+}
+
+.menu-category {
+    padding: 5px 20px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+.menu-item {
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.menu-item-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.menu-item-title {
+    color: var(--text-primary);
+}
+
+.menu-item.active {
+    border-left: 3px solid var(--accent);
+    background-color: var(--bg-tertiary);
+    font-weight: 500;
+    padding-left: 17px;
+}
+
+.menu-item.active .menu-item-title {
+    color: var(--accent);
+}
+
+.menu-item.active .menu-item-date {
+    color: var(--accent);
+    opacity: 0.8;
+}
