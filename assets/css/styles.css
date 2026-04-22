@@ -542,6 +542,8 @@ header {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1.25rem;
+    display: block;
+    overflow-x: auto;
 }
 
 .content th, .content td {

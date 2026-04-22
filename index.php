@@ -69,7 +69,7 @@
         rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
-    <link href="assets/css/styles.css?6" rel="stylesheet">
+    <link href="assets/css/styles.css?7" rel="stylesheet">
 </head>
 
 <body>
@@ -120,9 +120,9 @@
         </main>
     </div>
 
-    <script src="assets/js/external-links.js?6"></script>
-    <script src="assets/js/loader.js?6"></script>
-    <script src="assets/js/toggles.js?6"></script>
+    <script src="assets/js/external-links.js?7"></script>
+    <script src="assets/js/loader.js?7"></script>
+    <script src="assets/js/toggles.js?7"></script>
 </body>
 
 </html>
