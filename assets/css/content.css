@@ -1,3 +1,12 @@
+.content {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+}
+
 .content h1 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
@@ -25,7 +34,8 @@
     margin-bottom: 0.7rem;
 }
 
-.content ul, .content ol {
+.content ul,
+.content ol {
     margin-bottom: 1.25rem;
     padding-left: 0;
     list-style-position: outside;
@@ -45,7 +55,10 @@
     padding-left: 0.5rem;
 }
 
-.content ul ul, .content ol ul, .content ul ol, .content ol ol {
+.content ul ul,
+.content ol ul,
+.content ul ol,
+.content ol ol {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
@@ -129,7 +142,8 @@
     overflow-x: auto;
 }
 
-.content th, .content td {
+.content th,
+.content td {
     border: 1px solid var(--border-color);
     padding: 8px 12px;
     text-align: left;
@@ -159,11 +173,12 @@
     flex: 1;
 }
 
-.callout-content > p:last-child {
+.callout-content>p:last-child {
     margin-bottom: 0;
 }
 
-.callout-info, .callout-note {
+.callout-info,
+.callout-note {
     background-color: var(--callout-info-bg);
     border: 1px solid var(--callout-info-border);
 }
@@ -173,7 +188,9 @@
     border: 1px solid var(--callout-tip-border);
 }
 
-.callout-important, .callout-warning, .callout-caution {
+.callout-important,
+.callout-warning,
+.callout-caution {
     background-color: var(--callout-warning-bg);
     border: 1px solid var(--callout-warning-border);
 }

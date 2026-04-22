@@ -1,27 +1,3 @@
-body.read-mode .content {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 680px;
-    margin: 0 auto;
-    letter-spacing: 0.01em;
-}
-
-body.read-mode .content h1,
-body.read-mode .content h2,
-body.read-mode .content h3 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    letter-spacing: -0.02em;
-}
-
-body.read-mode .content p {
-    margin-bottom: 0.5rem;
-}
-
-body.read-mode .content code {
-    font-family: 'Courier New', Courier, monospace;
-}
-
 body.dyslexia-mode,
 body.dyslexia-mode .content,
 body.dyslexia-mode .content h1,

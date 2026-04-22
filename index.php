@@ -69,6 +69,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
     <link href="assets/css/vars.css?8" rel="stylesheet">
@@ -98,9 +99,6 @@
         <div class="header-right">
             <button class="dyslexia-toggle" id="dyslexiaToggle" title="Toggle Dyslexia Mode">
                 <i class="ri-font-size"></i>
-            </button>
-            <button class="read-mode-toggle" id="readModeToggle" title="Toggle Read Mode">
-                <i class="ri-book-read-line"></i>
             </button>
             <button class="light-mode-toggle" id="lightModeToggle" title="Light mode">
                 <i class="ri-sun-line"></i>

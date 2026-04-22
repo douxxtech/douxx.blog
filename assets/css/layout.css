@@ -78,7 +78,6 @@ header {
     color: var(--text-secondary);
 }
 
-.read-mode-toggle,
 .dyslexia-toggle,
 .light-mode-toggle {
     background-color: var(--bg-tertiary);
@@ -96,7 +95,6 @@ header {
     flex-shrink: 0;
 }
 
-.read-mode-toggle:hover,
 .dyslexia-toggle:hover,
 .light-mode-toggle:hover {
     background-color: var(--bg-primary);
@@ -104,7 +102,6 @@ header {
     color: var(--accent);
 }
 
-.read-mode-toggle.active,
 .dyslexia-toggle.active,
 .light-mode-toggle.active {
     background-color: var(--accent);
