@@ -13,22 +13,27 @@ function extractInfoFromMarkdown($fileContent)
     ];
 
     if (preg_match('/\[info_title\]: (.+)/', $fileContent, $matches)) {
-        $info['title'] = urldecode($matches[1]);
+        $info['title'] = trim(urldecode($matches[1]));
     }
 
     if (preg_match('/\[info_category\]: (.+)/', $fileContent, $matches)) {
-        $info['category'] = urldecode($matches[1]);
+        $info['category'] = trim(urldecode($matches[1]));
     }
 
     if (preg_match('/\[info_track\]: (.+)/', $fileContent, $matches)) {
-        $info['track'] = urldecode($matches[1]);
+        $info['track'] = trim(urldecode($matches[1]));
     }
 
     if (preg_match('/\[info_date\]: (.+)/', $fileContent, $matches)) {
-        $info['date'] = urldecode($matches[1]);
+        $info['date'] = trim(urldecode($matches[1]));
     }
 
     return $info;
+}
+
+function stripCategoryPrefix($category)
+{
+    return preg_replace('/^\d+-/', '', $category);
 }
 
 function getMarkdownPages($directory)
@@ -52,19 +57,25 @@ function getMarkdownPages($directory)
 
             $date = !empty($info['date']) ? $info['date'] : date('Y-m-d', filemtime($filePath));
 
+            $strippedCategory = stripCategoryPrefix($info['category']);
+
             $page = [
                 'id' => pathinfo($entry, PATHINFO_FILENAME),
                 'title' => $info['title'],
                 'file' => $entry,
-                'category' => $info['category'],
+                'category' => $strippedCategory,
                 'trackurl' => $info['track'],
                 'date' => $date
             ];
 
             $pages[] = $page;
 
-            if (!empty($info['category']) && !in_array($info['category'], $categoryOrder)) {
-                $categoryOrder[] = $info['category'];
+            if (!empty($info['category']) && !isset($categoryOrder[$strippedCategory])) {
+                if (preg_match('/^(\d+)-/', $info['category'], $catMatches)) {
+                    $categoryOrder[$strippedCategory] = (int)$catMatches[1];
+                } else {
+                    $categoryOrder[$strippedCategory] = PHP_INT_MAX;
+                }
             }
         }
         closedir($handle);
@@ -72,8 +83,8 @@ function getMarkdownPages($directory)
 
     usort($pages, function ($a, $b) use ($categoryOrder) {
         if ($a['category'] !== $b['category']) {
-            $indexA = array_search($a['category'], $categoryOrder);
-            $indexB = array_search($b['category'], $categoryOrder);
+            $indexA = $categoryOrder[$a['category']] ?? PHP_INT_MAX;
+            $indexB = $categoryOrder[$b['category']] ?? PHP_INT_MAX;
             return $indexA - $indexB;
         }
 

@@ -1,5 +1,5 @@
 [info_title]: Introduction
-[info_category]: MISC
+[info_category]: 1-MISC
 [info_date]: 2025-03-05
 [info_track]: https://track.dpip.lol/?id=Introduction
 
