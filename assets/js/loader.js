@@ -38,6 +38,8 @@ async function loadDocStructure() {
 }
 
 async function loadPage(pageId) {
+    window.scrollTo(0, 0);
+
     if (!pages[pageId]) {
         console.error(`Page not found: ${pageId}`);
         contentElement.innerHTML = '<h1>Page Not Found</h1><p>The requested page does not exist.</p>';
