@@ -44,13 +44,7 @@
         font-size: 16px;
     }
 
-    .sidebar {
-        transform: translateX(-100%);
-        transition: transform 0.15s ease;
-        z-index: 99;
-    }
-
-    .sidebar.active {
+    .sidebar:not(.hidden) {
         transform: translateX(0);
     }
 

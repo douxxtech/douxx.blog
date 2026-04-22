@@ -5,8 +5,11 @@ const menuButton = document.querySelector('.menu-button');
 const sidebar = document.querySelector('.sidebar');
 const searchInput = document.querySelector('.search-input');
 
+if (window.innerWidth <= 768) sidebar.classList.add('hidden');
+
 menuButton.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
+    sidebar.classList.toggle('hidden');
+    document.querySelector('.main-content').classList.toggle('expanded');
 });
 
 searchInput.addEventListener('input', (e) => {
