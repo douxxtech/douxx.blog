@@ -78,6 +78,18 @@ header {
     color: var(--text-secondary);
 }
 
+.progress-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--accent);
+    z-index: 99;
+    transition: width 0.1s linear;
+    opacity: 0;
+}
+
 .dyslexia-toggle,
 .light-mode-toggle {
     background-color: var(--bg-tertiary);

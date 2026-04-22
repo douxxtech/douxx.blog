@@ -105,6 +105,7 @@
             </button>
         </div>
     </header>
+    <div class="progress-bar" id="progress-bar"></div>
 
     <div class="content-wrapper">
         <aside class="sidebar">
@@ -130,6 +131,7 @@
     <script src="assets/js/renderer.js?7"></script>
     <script src="assets/js/sidebar.js?7"></script>
     <script src="assets/js/navigation.js?7"></script>
+    <script src="assets/js/progressbar.js?7"></script>
     <script src="assets/js/loader.js?7"></script>
     <script src="assets/js/toggles.js?7"></script>
     <script src="assets/js/external-links.js?7"></script>

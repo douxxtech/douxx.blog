@@ -102,6 +102,7 @@ async function loadPage(pageId) {
 
         createNavigationButtons(pageId);
         handleExternalLinks();
+        initProgressBar();
         executeScripts(contentElement);
 
     } catch (error) {
