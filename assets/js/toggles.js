@@ -17,6 +17,13 @@ if (lightMode) {
 function setToLight() {
     body.classList.add('light-mode');
     lightModeToggle.classList.add('active');
+    syncCodeTheme();
+}
+
+function syncCodeTheme() {
+    const isLight = body.classList.contains('light-mode');
+    document.getElementById('hljs-theme').disabled = isLight;
+    document.getElementById('hljs-theme-light').disabled = !isLight;
 }
 
 if (localStorage.getItem('dyslexiaMode') === 'enabled') {
@@ -44,4 +51,6 @@ lightModeToggle.addEventListener('click', () => {
     } else {
         localStorage.removeItem('lightMode');
     }
+
+    syncCodeTheme();
 });
