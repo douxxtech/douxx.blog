@@ -10,7 +10,7 @@ Here will be posted some tutorials, creations, or thoughts !
 
 If you need any help, or just want to chat, feel free to stalk me and DM me on any social listed on [douxx.tech](https://douxx.tech) !
 
-> [!NOTE] You can enable read mode and dyslexia mode by toggling the buttons on top of this website.  
+> [!NOTE] You can toggle light mode and dyslexia mode with the buttons on top of this website.  
 > Check all articles on the sidebar !
 
 It is <span id="time">idk</span> ! You clearly have the time to read those articles :3  
@@ -25,6 +25,8 @@ You can start by reading my latest article: **<a id="latest-art">¯\\\_(ツ)_/¯
     If you want to not be tracked, please click <a id="notrack" href="#">this link</a>. The setting is permanent, and can be resetted by clearing this site's data. If you wish to request a deletion of any data that may have already been stored, please visit <a href="https://dpip.lol/privacy" target="_blank">dpip.lol/privacy</a>
     </p>
 </details>
+
+[Robots trap](https://douxx.tech/roboty/)
 
 <style>
 .hand {
