@@ -72,13 +72,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
-    <link href="assets/css/vars.css?8" rel="stylesheet">
-    <link href="assets/css/base.css?8" rel="stylesheet">
-    <link href="assets/css/layout.css?8" rel="stylesheet">
-    <link href="assets/css/content.css?8" rel="stylesheet">
-    <link href="assets/css/modes.css?8" rel="stylesheet">
-    <link href="assets/css/navigation.css?8" rel="stylesheet">
-    <link href="assets/css/responsive.css?8" rel="stylesheet">
+    <link href="assets/css/vars.css?9" rel="stylesheet">
+    <link href="assets/css/base.css?9" rel="stylesheet">
+    <link href="assets/css/layout.css?9" rel="stylesheet">
+    <link href="assets/css/content.css?9" rel="stylesheet">
+    <link href="assets/css/modes.css?9" rel="stylesheet">
+    <link href="assets/css/navigation.css?9" rel="stylesheet">
+    <link href="assets/css/responsive.css?9" rel="stylesheet">
 </head>
 
 <body>
@@ -126,14 +126,14 @@
         </main>
     </div>
 
-    <script src="assets/js/config.js?8"></script>
-    <script src="assets/js/renderer.js?8"></script>
-    <script src="assets/js/sidebar.js?8"></script>
-    <script src="assets/js/navigation.js?8"></script>
-    <script src="assets/js/progressbar.js?8"></script>
-    <script src="assets/js/loader.js?8"></script>
-    <script src="assets/js/toggles.js?8"></script>
-    <script src="assets/js/external-links.js?8"></script>
+    <script src="assets/js/config.js?9"></script>
+    <script src="assets/js/renderer.js?9"></script>
+    <script src="assets/js/sidebar.js?9"></script>
+    <script src="assets/js/navigation.js?9"></script>
+    <script src="assets/js/progressbar.js?9"></script>
+    <script src="assets/js/loader.js?9"></script>
+    <script src="assets/js/toggles.js?9"></script>
+    <script src="assets/js/external-links.js?9"></script>
 </body>
 
 </html>

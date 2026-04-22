@@ -199,3 +199,29 @@
     background-color: var(--callout-danger-bg);
     border: 1px solid var(--callout-danger-border);
 }
+
+.code-block {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.code-block pre {
+    margin-bottom: 0;
+}
+
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    color: var(--text-secondary);
+    background-color: transparent;
+    border: none;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}

@@ -37,6 +37,19 @@ renderer.blockquote = function (quote) {
     return originalBlockquote.call(this, quote);
 };
 
+renderer.code = function(code, language) {
+    const highlighted = language && hljs.getLanguage(language)
+        ? hljs.highlight(code, { language }).value
+        : hljs.highlightAuto(code).value;
+
+    return `
+        <div class="code-block">
+            <button class="copy-button" onclick="copyCode(this)"><i class="ri-clipboard-line"></i></button>
+            <pre><code class="hljs ${language || ''}">${highlighted}</code></pre>
+        </div>
+    `;
+};
+
 marked.setOptions({
     renderer: renderer,
     highlight: function (code, lang) {
@@ -48,6 +61,14 @@ marked.setOptions({
     breaks: true,
     gfm: true
 });
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling.querySelector('code').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        btn.innerHTML = '<i class="ri-check-line"></i>';
+        setTimeout(() => btn.innerHTML = '<i class="ri-clipboard-line"></i>', 2000);
+    });
+}
 
 function executeScripts(container) {
     const scripts = container.querySelectorAll('script');
