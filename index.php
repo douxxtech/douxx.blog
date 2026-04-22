@@ -126,14 +126,14 @@
         </main>
     </div>
 
-    <script src="assets/js/config.js?7"></script>
-    <script src="assets/js/renderer.js?7"></script>
-    <script src="assets/js/sidebar.js?7"></script>
-    <script src="assets/js/navigation.js?7"></script>
-    <script src="assets/js/progressbar.js?7"></script>
-    <script src="assets/js/loader.js?7"></script>
-    <script src="assets/js/toggles.js?7"></script>
-    <script src="assets/js/external-links.js?7"></script>
+    <script src="assets/js/config.js?8"></script>
+    <script src="assets/js/renderer.js?8"></script>
+    <script src="assets/js/sidebar.js?8"></script>
+    <script src="assets/js/navigation.js?8"></script>
+    <script src="assets/js/progressbar.js?8"></script>
+    <script src="assets/js/loader.js?8"></script>
+    <script src="assets/js/toggles.js?8"></script>
+    <script src="assets/js/external-links.js?8"></script>
 </body>
 
 </html>
