@@ -25,10 +25,10 @@
 
 
             $title = !empty($titleMatches[1]) ? urldecode($titleMatches[1]) : "Douxx.tech";
-            $category = !empty($categoryMatches[1]) ? urldecode($categoryMatches[1]) : "Blog";
+            $category = !empty($categoryMatches[1]) ? preg_replace('/^\d+-/', '', urldecode($categoryMatches[1]) ): "Blog";
             $description = !empty($descriptionMatches[1])
                 ? urldecode($descriptionMatches[1])
-                : "Learn more about {$title} in the {$category} section on Douxx.blog!";
+                : "Learn more about {$title} in the {$category} category on Douxx.blog!";
             $ogImage = !empty($heroMatches[1]) ? $heroMatches[1] : $defaultImage;
 
             echo "<meta property='og:title' content='{$title} | Douxx.blog'>";
