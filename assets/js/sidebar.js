@@ -33,34 +33,23 @@ function buildSidebar(structure) {
         pages[page.id] = page;
     });
 
-    let currentCategory = null;
-
     structure.pages.forEach(page => {
-        if (page.category && page.category !== currentCategory) {
-            currentCategory = page.category;
-            const categoryEl = document.createElement('div');
-            categoryEl.className = 'menu-category';
-            categoryEl.textContent = currentCategory;
-            sidebarMenu.appendChild(categoryEl);
-        }
-
         const menuItem = document.createElement('div');
         menuItem.className = 'menu-item';
 
-        if (page.date) {
-            const dateEl = document.createElement('span');
-            dateEl.className = 'menu-item-date';
-            dateEl.textContent = formatDate(page.date);
+        const titleEl = document.createElement('span');
+        titleEl.className = 'menu-item-title';
+        titleEl.textContent = page.title;
+        menuItem.appendChild(titleEl);
 
-            const titleEl = document.createElement('span');
-            titleEl.className = 'menu-item-title';
-            titleEl.textContent = page.title;
-
-            menuItem.appendChild(dateEl);
-            menuItem.appendChild(titleEl);
-        } else {
-            menuItem.textContent = page.title;
-        }
+        // date + category as a small subtitle line
+        const metaEl = document.createElement('span');
+        metaEl.className = 'menu-item-date';
+        const parts = [];
+        if (page.date) parts.push(formatDate(page.date));
+        if (page.category) parts.push(page.category);
+        metaEl.textContent = parts.join(' · ');
+        menuItem.appendChild(metaEl);
 
         menuItem.dataset.pageId = page.id;
         menuItem.addEventListener('click', () => loadPage(page.id));

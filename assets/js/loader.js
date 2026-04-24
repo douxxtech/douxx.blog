@@ -23,6 +23,14 @@ async function loadDocStructure() {
 
         pagesArray = docsStructure.pages;
 
+        pagesArray = [
+            ...pagesArray.filter(p => p.id === config.defaultPage),
+            ...pagesArray
+                .filter(p => p.id !== config.defaultPage)
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+        ];
+        docsStructure.pages = pagesArray;
+
         buildSidebar(docsStructure);
 
     } catch (error) {
