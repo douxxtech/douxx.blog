@@ -31,8 +31,8 @@ function syncCodeTheme() {
             giscus: {
                 setConfig: {
                     theme: body.classList.contains('light-mode')
-                        ? 'https://douxx.blog/assets/css/giscus-light.css?11'
-                        : 'https://douxx.blog/assets/css/giscus.css?11'
+                        ? 'https://douxx.blog/assets/css/giscus-light.css?12'
+                        : 'https://douxx.blog/assets/css/giscus.css?12'
                 }
             }
         }, 'https://giscus.app');

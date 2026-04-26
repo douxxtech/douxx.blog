@@ -15,7 +15,7 @@ function initGiscus() {
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'top');
-    script.setAttribute('data-theme', isLight ? 'https://douxx.blog/assets/css/giscus-light.css?11' : 'https://douxx.blog/assets/css/giscus.css?11');
+    script.setAttribute('data-theme', isLight ? 'https://douxx.blog/assets/css/giscus-light.css?12' : 'https://douxx.blog/assets/css/giscus.css?12');
     script.setAttribute('data-lang', 'en');
     script.crossOrigin = 'anonymous';
     script.async = true;
