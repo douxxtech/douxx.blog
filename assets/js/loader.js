@@ -101,7 +101,10 @@ async function loadPage(pageId) {
             fetchUniqueViews(page.trackurl);
         }
 
-        history.pushState({ pageId }, page.title, `?p=${pageId}`);
+        const giscusToken = new URLSearchParams(window.location.search).get('giscus');
+        const newUrl = giscusToken ? `?p=${pageId}&giscus=${encodeURIComponent(giscusToken)}` : `?p=${pageId}`;
+        history.pushState({ pageId }, page.title, newUrl);
+
         document.title = `${page.title} - ${docsStructure.title || 'Documentation'}`;
 
         document.querySelectorAll('pre code').forEach((block) => {
