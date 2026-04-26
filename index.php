@@ -121,6 +121,7 @@
                 <div class="content" id="content">
                     <div class="loading">Loading articles...</div>
                 </div>
+                <div id="giscus-container" class="giscus-container"></div>
                 <div class="page-navigation" id="page-navigation">
                 </div>
             </div>
@@ -132,6 +133,7 @@
     <script src="assets/js/sidebar.js?11"></script>
     <script src="assets/js/navigation.js?11"></script>
     <script src="assets/js/progressbar.js?11"></script>
+    <script src="assets/js/giscus.js?11"></script>
     <script src="assets/js/loader.js?11"></script>
     <script src="assets/js/toggles.js?11"></script>
     <script src="assets/js/external-links.js?11"></script>

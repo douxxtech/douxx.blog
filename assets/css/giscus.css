@@ -1,0 +1,82 @@
+/* entirely made by claude, obv */
+
+:root {
+    --color-prettylights-syntax-comment: rgb(190, 180, 170);
+    --color-prettylights-syntax-constant: rgb(255, 154, 86);
+    --color-prettylights-syntax-entity: rgb(255, 180, 120);
+    --color-prettylights-syntax-storage-modifier-import: rgb(235, 230, 225);
+    --color-prettylights-syntax-entity-tag: rgb(255, 154, 86);
+    --color-prettylights-syntax-keyword: rgb(255, 130, 80);
+    --color-prettylights-syntax-string: rgb(255, 200, 140);
+    --color-prettylights-syntax-variable: rgb(235, 230, 225);
+    --color-prettylights-syntax-brackethighlighter-unmatched: rgb(255, 100, 73);
+    --color-prettylights-syntax-invalid-illegal-text: rgb(235, 230, 225);
+    --color-prettylights-syntax-invalid-illegal-bg: rgb(255, 100, 73);
+    --color-prettylights-syntax-carriage-return-text: rgb(235, 230, 225);
+    --color-prettylights-syntax-carriage-return-bg: rgb(255, 100, 73);
+    --color-prettylights-syntax-string-regexp: rgb(255, 200, 120);
+    --color-prettylights-syntax-markup-list: rgb(255, 180, 100);
+    --color-prettylights-syntax-markup-heading: rgb(255, 154, 86);
+    --color-prettylights-syntax-markup-italic: rgb(235, 230, 225);
+    --color-prettylights-syntax-markup-bold: rgb(235, 230, 225);
+    --color-prettylights-syntax-markup-deleted-text: rgb(255, 100, 73);
+    --color-prettylights-syntax-markup-deleted-bg: rgba(255, 100, 73, 0.1);
+    --color-prettylights-syntax-markup-inserted-text: rgb(180, 220, 150);
+    --color-prettylights-syntax-markup-inserted-bg: rgba(180, 220, 150, 0.1);
+    --color-prettylights-syntax-markup-changed-text: rgb(255, 180, 100);
+    --color-prettylights-syntax-markup-changed-bg: rgba(255, 180, 100, 0.1);
+    --color-prettylights-syntax-markup-ignored-text: rgb(190, 180, 170);
+    --color-prettylights-syntax-markup-ignored-bg: rgb(28, 26, 24);
+
+    --color-fg-default: rgb(235, 230, 225);
+    --color-fg-muted: rgb(190, 180, 170);
+    --color-fg-subtle: rgb(190, 180, 170);
+
+    --color-canvas-default: rgb(15, 13, 12);
+    --color-canvas-overlay: rgb(20, 18, 17);
+    --color-canvas-inset: rgb(15, 13, 12);
+    --color-canvas-subtle: rgb(28, 26, 24);
+
+    --color-border-default: rgb(45, 42, 40);
+    --color-border-muted: rgb(45, 42, 40);
+    --color-border-subtle: rgb(45, 42, 40);
+
+    --color-neutral-muted: rgba(45, 42, 40, 0.5);
+
+    --color-accent-fg: rgb(255, 154, 86);
+    --color-accent-emphasis: rgb(255, 154, 86);
+    --color-accent-muted: rgba(255, 154, 86, 0.2);
+    --color-accent-subtle: rgba(255, 154, 86, 0.1);
+
+    --color-success-fg: rgb(180, 220, 150);
+    --color-success-emphasis: rgb(180, 220, 150);
+    --color-success-muted: rgba(180, 220, 150, 0.2);
+    --color-success-subtle: rgba(180, 220, 150, 0.1);
+
+    --color-attention-fg: rgb(255, 180, 100);
+    --color-attention-emphasis: rgb(255, 180, 100);
+    --color-attention-muted: rgba(255, 180, 100, 0.2);
+    --color-attention-subtle: rgba(255, 180, 100, 0.1);
+
+    --color-danger-fg: rgb(255, 100, 73);
+    --color-danger-emphasis: rgb(255, 100, 73);
+    --color-danger-muted: rgba(255, 100, 73, 0.2);
+    --color-danger-subtle: rgba(255, 100, 73, 0.1);
+
+    --color-done-fg: rgb(220, 160, 255);
+    --color-done-emphasis: rgb(220, 160, 255);
+    --color-done-muted: rgba(220, 160, 255, 0.2);
+    --color-done-subtle: rgba(220, 160, 255, 0.1);
+
+    --color-sponsors-fg: rgb(255, 130, 180);
+    --color-sponsors-emphasis: rgb(255, 130, 180);
+    --color-sponsors-muted: rgba(255, 130, 180, 0.2);
+    --color-sponsors-subtle: rgba(255, 130, 180, 0.1);
+
+    --color-primer-fg-disabled: rgb(190, 180, 170);
+    --color-primer-shadow-inset: 0 0 0 1px rgb(45, 42, 40);
+    --color-primer-shadow-focus: 0 0 0 3px rgba(255, 154, 86, 0.3);
+
+    --color-scale-gray-7: rgb(28, 26, 24);
+    --color-scale-blue-8: rgb(255, 154, 86);
+}

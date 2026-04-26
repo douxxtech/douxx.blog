@@ -24,6 +24,19 @@ function syncCodeTheme() {
     const isLight = body.classList.contains('light-mode');
     document.getElementById('hljs-theme').disabled = isLight;
     document.getElementById('hljs-theme-light').disabled = !isLight;
+
+    const giscus = document.querySelector('iframe.giscus-frame');
+    if (giscus) {
+        giscus.contentWindow.postMessage({
+            giscus: {
+                setConfig: {
+                    theme: body.classList.contains('light-mode')
+                        ? 'https://douxx.blog/assets/css/giscus-light.css?11'
+                        : 'https://douxx.blog/assets/css/giscus.css?11'
+                }
+            }
+        }, 'https://giscus.app');
+    }
 }
 
 if (localStorage.getItem('dyslexiaMode') === 'enabled') {

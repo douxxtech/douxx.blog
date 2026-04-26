@@ -113,6 +113,7 @@ async function loadPage(pageId) {
         createNavigationButtons(pageId);
         handleExternalLinks();
         initProgressBar();
+        initGiscus();
         executeScripts(contentElement);
 
     } catch (error) {
