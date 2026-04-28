@@ -183,11 +183,52 @@ function generateRssFromMarkdownFiles($directory)
     return $rssFeed->asXML();
 }
 
+function extractCoverImage($fileContent)
+{
+    if (preg_match('/!\[.*?\]\((.+?)\)/', $fileContent, $matches)) {
+        return trim($matches[1]);
+    }
+    return '';
+}
+
+function generateSitemapFromMarkdownFiles($directory)
+{
+    $pages = getMarkdownPages($directory);
+
+    $urlset = new SimpleXMLElement(
+        '<?xml version="1.0" encoding="UTF-8"?>' .
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' .
+            'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"></urlset>'
+    );
+
+    foreach ($pages as $page) {
+        $fileContent = file_get_contents($directory . '/' . $page['file']);
+        $cover = extractCoverImage($fileContent);
+
+        $url = $urlset->addChild('url');
+        $url->addChild('loc', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        $url->addChild('lastmod', date('Y-m-d', strtotime($page['date'])));
+        $url->addChild('changefreq', 'monthly');
+        $url->addChild('priority', '0.8');
+
+        if (!empty($cover)) {
+            $imageNS = 'http://www.google.com/schemas/sitemap-image/1.1';
+            $image = $url->addChild('image:image', null, $imageNS);
+            $image->addChild('image:loc', htmlspecialchars($cover, ENT_XML1, 'UTF-8'), $imageNS);
+        }
+    }
+
+    return $urlset->asXML();
+}
+
 $directory = __DIR__;
 
 if (isset($_GET['rss'])) {
     header('Content-Type: application/xml');
     echo generateRssFromMarkdownFiles($directory);
+} elseif (isset($_GET['sitemap'])) {
+    header('Content-Type: application/xml');
+    echo generateSitemapFromMarkdownFiles($directory);
 } else {
     header('Content-Type: application/json');
     echo generateJsonFromMarkdownFiles($directory);
