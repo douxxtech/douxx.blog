@@ -73,13 +73,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 
-    <link href="assets/css/vars.css?12" rel="stylesheet">
-    <link href="assets/css/base.css?12" rel="stylesheet">
-    <link href="assets/css/layout.css?12" rel="stylesheet">
-    <link href="assets/css/content.css?12" rel="stylesheet">
-    <link href="assets/css/modes.css?12" rel="stylesheet">
-    <link href="assets/css/navigation.css?12" rel="stylesheet">
-    <link href="assets/css/responsive.css?12" rel="stylesheet">
+    <link href="assets/css/vars.css?13" rel="stylesheet">
+    <link href="assets/css/base.css?13" rel="stylesheet">
+    <link href="assets/css/layout.css?13" rel="stylesheet">
+    <link href="assets/css/content.css?13" rel="stylesheet">
+    <link href="assets/css/modes.css?13" rel="stylesheet">
+    <link href="assets/css/navigation.css?13" rel="stylesheet">
+    <link href="assets/css/responsive.css?13" rel="stylesheet">
 </head>
 
 <body>
@@ -128,15 +128,15 @@
         </main>
     </div>
 
-    <script src="assets/js/config.js?12"></script>
-    <script src="assets/js/renderer.js?12"></script>
-    <script src="assets/js/sidebar.js?12"></script>
-    <script src="assets/js/navigation.js?12"></script>
-    <script src="assets/js/progressbar.js?12"></script>
-    <script src="assets/js/giscus.js?12"></script>
-    <script src="assets/js/loader.js?12"></script>
-    <script src="assets/js/toggles.js?12"></script>
-    <script src="assets/js/external-links.js?12"></script>
+    <script src="assets/js/config.js?13"></script>
+    <script src="assets/js/renderer.js?13"></script>
+    <script src="assets/js/sidebar.js?13"></script>
+    <script src="assets/js/navigation.js?13"></script>
+    <script src="assets/js/progressbar.js?13"></script>
+    <script src="assets/js/giscus.js?13"></script>
+    <script src="assets/js/loader.js?13"></script>
+    <script src="assets/js/toggles.js?13"></script>
+    <script src="assets/js/external-links.js?13"></script>
 </body>
 
 </html>
