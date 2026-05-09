@@ -1,3 +1,6 @@
+> [!WARNING]
+> This code no longer powers [douxx.blog](https://douxx.blog), I've switched to a new blog engine (not yet open source). The old version is still accessible at [legacy.douxx.blog](https://legacy.douxx.blog). [Read more about this here](https://aka.dbo.one/newblog).
+
 # Welcome to my blog 0/
 
 Hi and welcome to [douxx.tech](https://douxx.tech)'s blog !

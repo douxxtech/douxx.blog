@@ -2,7 +2,7 @@ function initGiscus() {
     const giscus = document.getElementById('giscus-container');
     const existingFrame = document.querySelector('iframe.giscus-frame');
     const isLight = document.body.classList.contains('light-mode');
-    const theme = isLight ? 'https://douxx.blog/assets/css/giscus-light.css?13' : 'https://douxx.blog/assets/css/giscus.css?13';
+    const theme = isLight ? 'https://legacy.douxx.blog/assets/css/giscus-light.css?13' : 'https://legacy.douxx.blog/assets/css/giscus.css?13';
 
     if (existingFrame) {
         existingFrame.contentWindow.postMessage({

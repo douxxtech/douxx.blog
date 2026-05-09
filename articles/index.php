@@ -122,12 +122,12 @@ function generateRssFromMarkdownFiles($directory)
     $channel = $rssFeed->addChild('channel');
 
     $channel->addChild('title', 'Douxx.tech | Blog');
-    $channel->addChild('link', 'https://douxx.blog');
+    $channel->addChild('link', 'https://legacy.douxx.blog');
     $channel->addChild('description', 'RSS feed for Douxx.blog');
 
     $atomNS = 'http://www.w3.org/2005/Atom';
     $atomLink = $channel->addChild('atom:link', null, $atomNS);
-    $atomLink->addAttribute('href', 'https://douxx.blog/?rss');
+    $atomLink->addAttribute('href', 'https://legacy.douxx.blog/?rss');
     $atomLink->addAttribute('rel', 'self');
     $atomLink->addAttribute('type', 'application/rss+xml');
 
@@ -163,9 +163,9 @@ function generateRssFromMarkdownFiles($directory)
 
         $item = $channel->addChild('item');
         $item->addChild('title', htmlspecialchars($page['title'], ENT_XML1, 'UTF-8'));
-        $item->addChild('link', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        $item->addChild('link', 'https://legacy.douxx.blog/?p=' . urlencode($page['id']));
 
-        $guid = $item->addChild('guid', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        $guid = $item->addChild('guid', 'https://legacy.douxx.blog/?p=' . urlencode($page['id']));
         $guid->addAttribute('isPermaLink', 'true');
 
         $item->addChild('pubDate', $pubDate);
@@ -206,7 +206,7 @@ function generateSitemapFromMarkdownFiles($directory)
         $cover = extractCoverImage($fileContent);
 
         $url = $urlset->addChild('url');
-        $url->addChild('loc', 'https://douxx.blog/?p=' . urlencode($page['id']));
+        $url->addChild('loc', 'https://legacy.douxx.blog/?p=' . urlencode($page['id']));
         $url->addChild('lastmod', date('Y-m-d', strtotime($page['date'])));
         $url->addChild('changefreq', 'monthly');
         $url->addChild('priority', '0.8');
